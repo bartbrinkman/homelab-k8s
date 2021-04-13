@@ -1,0 +1,6 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/bartbrinkman/homelab-k8s
+    targetRevision: HEAD
