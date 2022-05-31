@@ -1,5 +1,4 @@
 prometheus:
-  enabled: false
   prometheusSpec:
     storageSpec:
       volumeClaimTemplate:
