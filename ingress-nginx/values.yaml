@@ -1,0 +1,26 @@
+ingress-nginx:
+  controller:
+    dnsPolicy: ClusterFirstWithHostNet
+    hostNetwork: true
+    kind: "DaemonSet"
+
+    watchIngressWithoutClass: true
+
+    publishService:
+      enabled: false
+    
+    service:
+      enabled: true
+      type: ClusterIP
+
+    metrics:
+      enabled: true
+      
+    podSecurityPolicy:
+      enabled: true
+
+    serviceAccount:
+      create: true
+
+    admissionWebhooks:
+      enabled: false
