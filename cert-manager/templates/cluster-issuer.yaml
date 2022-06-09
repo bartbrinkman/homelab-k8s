@@ -12,7 +12,3 @@ spec:
     - http01:
         ingress:
           class: ingress-nginx
-          ingressTemplate:
-            metadata:
-              annotations:
-                acme.cert-manager.io/http01-edit-in-place: "true"
