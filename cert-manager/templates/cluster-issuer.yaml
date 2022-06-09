@@ -15,5 +15,6 @@ spec:
           ingressTemplate:
             metadata:
               annotations:
+                kubernetes.io/ingress.class: ingress-nginx
                 ingress.kubernetes.io/ssl-redirect: "false"
                 nginx.org/redirect-to-https: "false"
