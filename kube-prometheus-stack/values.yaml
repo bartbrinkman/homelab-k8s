@@ -9,16 +9,17 @@ kube-prometheus-stack:
       enabled: false
 
   grafana:
-    ingress: true
-    ingressClassName: nginx
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt
-    hosts:
-    - grafana.homelab.bartbrinkman.nl
-    tls:
-    - secretName: grafana-general-tls
+    ingress: 
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
       hosts:
-      - grafana.homelab.bartbrinkman.nl  
+      - grafana.homelab.bartbrinkman.nl
+      tls:
+      - secretName: grafana-general-tls
+        hosts:
+        - grafana.homelab.bartbrinkman.nl  
 
   prometheus:
     prometheusSpec:
