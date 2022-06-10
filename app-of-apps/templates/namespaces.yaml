@@ -51,3 +51,12 @@ metadata:
     name: heimdall
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: code-server
+  labels:
+    name: code-server
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
