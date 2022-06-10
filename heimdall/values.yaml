@@ -1,15 +1,19 @@
 heimdall:
   ingress: 
-    enabled: true
-    ingressClassName: nginx
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt
-    hosts:
-    - heimdall.homelab.bartbrinkman.nl
-    tls:
-    - secretName: heimdall-tls
+    main: 
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
       hosts:
-      - heimdall.homelab.bartbrinkman.nl  
+      - heimdall.homelab.bartbrinkman.nl
+      tls:
+      - secretName: heimdall-tls
+        hosts:
+        - heimdall.homelab.bartbrinkman.nl  
   persistence:
     config:
       enabled: true
+      type: pvc
+      accessMode: ReadWriteOnce
+      size: 1Gi
