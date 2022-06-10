@@ -1,0 +1,12 @@
+portainer:
+  ingress:
+    enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+      - portainer.homelab.bartbrinkman.nl
+      tls:
+      - secretName: portainer-tls
+        hosts:
+        - portainer.homelab.bartbrinkman.nl  
