@@ -10,3 +10,6 @@ heimdall:
     - secretName: heimdall-tls
       hosts:
       - heimdall.homelab.bartbrinkman.nl  
+  persistence:
+    config:
+      enabled: true
