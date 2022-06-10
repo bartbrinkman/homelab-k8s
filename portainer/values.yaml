@@ -1,11 +1,13 @@
 portainer:
+  service:
+    type: ClusterIP
   ingress:
     enabled: true
-      ingressClassName: nginx
       annotations:
+        kubernetes.io/ingress.class: nginx
         cert-manager.io/cluster-issuer: letsencrypt
       hosts:
-      - portainer.homelab.bartbrinkman.nl
+      - host: portainer.homelab.bartbrinkman.nl
       tls:
       - secretName: portainer-tls
         hosts:
