@@ -8,6 +8,8 @@ portainer:
       cert-manager.io/cluster-issuer: letsencrypt
     hosts:
     - host: portainer.homelab.bartbrinkman.nl
+      paths:
+      - path: /
     tls:
     - secretName: portainer-tls
       hosts:
