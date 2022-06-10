@@ -25,4 +25,4 @@ appVersion: "1.0"
 dependencies:
 - name: heimdall
   version: 4.4.2
-  repository: https://k8s-at-home.com/charts/
+  repository: https://k8s-at-home.com/charts/heimdall/
