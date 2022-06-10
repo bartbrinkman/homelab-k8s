@@ -6,11 +6,14 @@ heimdall:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt
       hosts:
-      - heimdall.homelab.bartbrinkman.nl
+      - host: heimdall.homelab.bartbrinkman.nl
+        paths:
+        - path: /
       tls:
       - secretName: heimdall-tls
         hosts:
-        - heimdall.homelab.bartbrinkman.nl  
+        - heimdall.homelab.bartbrinkman.nl
+        
   persistence:
     config:
       enabled: true
