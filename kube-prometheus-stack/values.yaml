@@ -1,5 +1,18 @@
 kube-prometheus-stack:
 
+  alertmanager:
+    ingress: 
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+      - alertmanager.homelab.bartbrinkman.nl
+      tls:
+      - secretName: alertmanager-general-tls
+        hosts:
+        - alertmanager.homelab.bartbrinkman.nl 
+
   prometheusOperator:
     admissionWebhooks:
       enabled: false
