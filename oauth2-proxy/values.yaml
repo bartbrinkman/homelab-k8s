@@ -37,6 +37,7 @@ oauth2-proxy:
     pass_host_header=true
     pass_user_headers=true
     request_logging=true
+
   extraArgs:
     whitelist-domain: ".bartbrinkman.nl"
     upstream: "file:///dev/null"
@@ -46,4 +47,4 @@ oauth2-proxy:
     cookie-name: "oauth2-proxy"
 
   metrics:
-    enabled: true
+    enabled: false
