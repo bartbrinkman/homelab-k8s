@@ -1,0 +1,49 @@
+oauth2-proxy:
+  ingress:
+    enabled: true
+    path: /
+    hosts:
+    - oauth2-proxy.homelab.bartbrinkman.nl
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt
+    tls:
+    - secretName: oauth2-proxy-tls
+      hosts:
+      - oauth2-proxy.homelab.bartbrinkman.nl 
+
+  image:
+    repository: "quay.io/oauth2-proxy/oauth2-proxy"
+    tag: "v7.0.1"
+    pullPolicy: "IfNotPresent"
+
+  config:
+    clientID: "YourClientID"
+    clientSecret: "YourClientSecret"
+    cookieSecret: "YourCookieSecret"
+
+  configFile: |-
+    provider = "gitlab"
+    provider_display_name = "Homelab OAuth2 authentication"
+    redirect_url = "https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/callback" # the same as in Gitlab !!!
+    login_url = "https://gitlabdomain.com/oauth/authorize"
+    redeem_url="https://gitlabdomain.com/oauth/token"
+    oidc_jwks_url="https://gitlabdomain.com/oauth/discovery/keys"
+    validate_url="https://gitlabdomain.com/api/v4/user"
+    cookie_refresh=0
+    cookie_secure=true
+    oidc_issuer_url="https://gitlabdomain.com"
+    set_xauthrequest=true
+    pass_host_header=true
+    pass_user_headers=true
+    request_logging=true
+  extraArgs:
+    whitelist-domain: ".bartbrinkman.nl"
+    upstream: "file:///dev/null"
+    cookie-domain: ".bartbrinkman.nl"
+    email-domain: "*"
+    gitlab-group: ""
+    cookie-name: "oauth2-proxy"
+
+  metrics:
+    enabled: true
