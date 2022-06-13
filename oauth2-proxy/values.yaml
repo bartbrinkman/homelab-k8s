@@ -23,15 +23,14 @@ oauth2-proxy:
       provider = "github"
       provider_display_name = "Homelab OAuth2 authentication"
       redirect_url = "https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/callback"
-      github-user = "bartbrinkman"
 
   extraArgs:
     whitelist-domain: ".bartbrinkman.nl"
     upstream: "file:///dev/null"
     cookie-domain: ".bartbrinkman.nl"
     email-domain: "*"
-    gitlab-group: ""
     cookie-name: "oauth2-proxy"
+    github-user: "bartbrinkman"
 
   metrics:
     enabled: false
