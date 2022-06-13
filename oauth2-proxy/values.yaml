@@ -25,7 +25,7 @@ oauth2-proxy:
   configFile: |-
     provider = "gitlab"
     provider_display_name = "Homelab OAuth2 authentication"
-    redirect_url = "https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/callback" # the same as in Gitlab !!!
+    redirect_url = "https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/callback"
     login_url = "https://gitlabdomain.com/oauth/authorize"
     redeem_url="https://gitlabdomain.com/oauth/token"
     oidc_jwks_url="https://gitlabdomain.com/oauth/discovery/keys"
