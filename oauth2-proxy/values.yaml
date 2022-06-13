@@ -17,22 +17,22 @@ oauth2-proxy:
     tag: "v7.0.1"
     pullPolicy: "IfNotPresent"
 
-  config:
-    clientID: "YourClientID"
-    clientSecret: "YourClientSecret"
-    cookieSecret: "YourCookieSecret"
+  # config:
+  #   clientID: "YourClientID"
+  #   clientSecret: "YourClientSecret"
+  #   cookieSecret: "YourCookieSecret"
 
   configFile: |-
     provider = "gitlab"
     provider_display_name = "Homelab OAuth2 authentication"
     redirect_url = "https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/callback"
-    login_url = "https://gitlabdomain.com/oauth/authorize"
-    redeem_url="https://gitlabdomain.com/oauth/token"
-    oidc_jwks_url="https://gitlabdomain.com/oauth/discovery/keys"
-    validate_url="https://gitlabdomain.com/api/v4/user"
+    login_url = "https://github.com/oauth/authorize"
+    redeem_url="https://github.com/oauth/token"
+    oidc_jwks_url="https://github.com/oauth/discovery/keys"
+    validate_url="https://github.com/api/v4/user"
     cookie_refresh=0
     cookie_secure=true
-    oidc_issuer_url="https://gitlabdomain.com"
+    oidc_issuer_url="https://github.com"
     set_xauthrequest=true
     pass_host_header=true
     pass_user_headers=true
