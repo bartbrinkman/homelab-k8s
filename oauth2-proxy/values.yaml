@@ -19,12 +19,9 @@ oauth2-proxy:
 
   config:
     existingSecret: oauth2-proxy
-  #   clientID: "YourClientID"
-  #   clientSecret: "YourClientSecret"
-  #   cookieSecret: "YourCookieSecret"
 
   configFile: |-
-    provider = "gitlab"
+    provider = "github"
     provider_display_name = "Homelab OAuth2 authentication"
     redirect_url = "https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/callback"
     login_url = "https://github.com/oauth/authorize"
