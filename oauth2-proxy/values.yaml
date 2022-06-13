@@ -17,7 +17,8 @@ oauth2-proxy:
     tag: "v7.0.1"
     pullPolicy: "IfNotPresent"
 
-  # config:
+  config:
+    existingSecret: oauth2-proxy
   #   clientID: "YourClientID"
   #   clientSecret: "YourClientSecret"
   #   cookieSecret: "YourCookieSecret"
