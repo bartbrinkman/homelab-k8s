@@ -14,6 +14,7 @@ kubernetes-dashboard:
       - kubernetes-dashboard.homelab.bartbrinkman.nl 
 
   extraArgs:
+  - --namespace=kubernetes-dashboard
   - --enable-skip-login
   - --enable-insecure-login
   - --disable-settings-authorizer
