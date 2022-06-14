@@ -12,3 +12,8 @@ kubernetes-dashboard:
     - secretName: kubernetes-dashboard-general-tls
       hosts:
       - kubernetes-dashboard.homelab.bartbrinkman.nl 
+
+  extraArgs:
+  - --enable-skip-login
+  - --enable-insecure-login
+  - --disable-settings-authorizer
