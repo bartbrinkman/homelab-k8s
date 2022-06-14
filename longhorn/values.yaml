@@ -1,6 +1,6 @@
 longhorn:
   ingress:
-    enabled: false
+    enabled: true
     ingressClassName: nginx
     host: longhorn.homelab.bartbrinkman.nl
     tls: true
