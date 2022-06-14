@@ -18,3 +18,6 @@ kubernetes-dashboard:
   - --enable-skip-login
   - --enable-insecure-login
   - --disable-settings-authorizer
+
+  rbac:
+    clusterReadOnlyRole: false
