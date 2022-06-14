@@ -20,4 +20,4 @@ kubernetes-dashboard:
   - --disable-settings-authorizer
 
   rbac:
-    clusterReadOnlyRole: false
+    clusterReadOnlyRole: true
