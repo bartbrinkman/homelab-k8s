@@ -1,0 +1,14 @@
+kubernetes-dashboard:
+  ingress: 
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/start?rd=https://$host$request_uri$is_args$args
+      nginx.ingress.kubernetes.io/auth-url: https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/auth
+    hosts:
+    - kubernetes-dashboard.homelab.bartbrinkman.nl
+    tls:
+    - secretName: kubernetes-dashboard-general-tls
+      hosts:
+      - kubernetes-dashboard.homelab.bartbrinkman.nl 
