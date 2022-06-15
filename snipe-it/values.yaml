@@ -7,8 +7,8 @@ snipe-it:
     hosts:
     - host: snipe-it.homelab.bartbrinkman.nl
       paths:
-        - path: /
-          pathType: Prefix
+      - path: /
+        pathType: Prefix
     tls:
     - secretName: snipe-it-tls
       hosts:
