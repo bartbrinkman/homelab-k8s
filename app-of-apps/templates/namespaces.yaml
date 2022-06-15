@@ -87,3 +87,12 @@ metadata:
     name: kubernetes-dashboard
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: snipe-it
+  labels:
+    name: snipe-it
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
