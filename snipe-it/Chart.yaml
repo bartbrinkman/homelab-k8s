@@ -23,6 +23,5 @@ version: 0.1.0
 appVersion: "1.0"
 
 dependencies:
-- name: snipeit
-  version: 3.3.0
-  repository: https://storage.googleapis.com/t3n-helm-charts
+- name: snipe-it
+  repository: https://charts.truecharts.org/
