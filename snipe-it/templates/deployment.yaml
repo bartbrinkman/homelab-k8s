@@ -27,7 +27,12 @@ spec:
               value: '1000'
             - name: TZ
               value: UTC
-          image: 'snipe/snipe-it:6.0.4'
+            - name: APP_KEY
+              valueFrom:
+              secretKeyRef:
+                name: snipe-it
+                key: app-key
+          image: 'snipe/snipe-it:v6.0.4'
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
