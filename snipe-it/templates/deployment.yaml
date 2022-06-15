@@ -29,9 +29,9 @@ spec:
               value: UTC
             - name: APP_KEY
               valueFrom:
-              secretKeyRef:
-                name: snipe-it
-                key: app-key
+                secretKeyRef:
+                  name: snipe-it
+                  key: app-key
           image: 'snipe/snipe-it:v6.0.4'
           imagePullPolicy: IfNotPresent
           livenessProbe:
