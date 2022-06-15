@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: snipe-it
+  namespace: snipe-it
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: snipe-it.homelab.bartbrinkman.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: snipe-it
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - snipe-it.homelab.bartbrinkman.nl
+      secretName: snipe-it-tls
