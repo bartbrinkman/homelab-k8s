@@ -24,5 +24,5 @@ appVersion: "1.0"
 
 dependencies:
 - name: snipe-it
-  version: 2.0.16
-  repository: https://charts.truecharts.org/
+  version: 1.0.5
+  repository: https://nicholaswilde.github.io/helm-charts/

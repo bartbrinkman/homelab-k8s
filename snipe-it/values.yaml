@@ -1,0 +1,14 @@
+snipe-it:
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+    - host: snipe-it.homelab.bartbrinkman.nl
+      paths:
+      - path: /
+    tls:
+    - secretName: snipe-it-tls
+      hosts:
+      - snipe-it.homelab.bartbrinkman.nl  
