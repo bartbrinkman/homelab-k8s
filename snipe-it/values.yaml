@@ -1,4 +1,4 @@
-snipe-it:
+snipeit:
   ingress:
     enabled: true
     annotations:

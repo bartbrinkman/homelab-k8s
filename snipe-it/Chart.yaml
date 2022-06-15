@@ -23,6 +23,6 @@ version: 0.1.0
 appVersion: "1.0"
 
 dependencies:
-- name: snipe-it
+- name: snipeit
   version: 1.0.5
-  repository: https://nicholaswilde.github.io/helm-charts/
+  repository: https://storage.googleapis.com/t3n-helm-charts
