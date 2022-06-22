@@ -1,3 +1,9 @@
 mysql:
   auth:
     existingSecret: mysql
+
+  initdbScripts:
+    homelab.sh: |
+      #!/bin/bash -e
+      . /opt/bitnami/scripts/libmariadb.sh
+      mysql_ensure_database_exists 'snipe-it'

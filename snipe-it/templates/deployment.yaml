@@ -38,11 +38,6 @@ spec:
                 secretKeyRef:
                   name: snipe-it
                   key: mysql-root-password
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: snipe-it
-                  key: mysql-root-password
             - name: APP_KEY
               valueFrom:
                 secretKeyRef:
