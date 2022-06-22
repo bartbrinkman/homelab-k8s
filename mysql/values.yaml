@@ -5,5 +5,5 @@ mysql:
   initdbScripts:
     homelab.sh: |
       #!/bin/bash -e
-      . /opt/bitnami/scripts/libmariadb.sh
+      . /opt/bitnami/scripts/libmysql.sh
       mysql_ensure_database_exists 'snipe-it'
