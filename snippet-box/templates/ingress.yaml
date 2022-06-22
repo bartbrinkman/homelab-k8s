@@ -15,7 +15,7 @@ spec:
               service:
                 name: snippet-box
                 port:
-                  number: 80
+                  number: 5000
             path: /
             pathType: Prefix
   tls:
