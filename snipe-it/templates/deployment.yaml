@@ -28,7 +28,7 @@ spec:
             - name: TZ
               value: UTC
             - name: MYSQL_PORT_3306_TCP_ADDR
-              value: mysql
+              value: mysql.mysql.svc.cluster.local
             - name: MYSQL_DATABASE
               value: snipe-it
             - name: MYSQL_USER
