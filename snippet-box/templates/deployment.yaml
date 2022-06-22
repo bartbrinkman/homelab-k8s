@@ -20,7 +20,7 @@ spec:
     spec:
       automountServiceAccountToken: true
       containers:
-          image: 'pawelmalak/snippet-box:latest'
+        - image: 'pawelmalak/snippet-box:latest'
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
