@@ -105,3 +105,12 @@ metadata:
     name: mysql
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: snippet-box
+  labels:
+    name: snippet-box
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"

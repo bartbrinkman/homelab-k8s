@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: snippet-box
+  namespace: snippet-box
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: snippet-box.homelab.bartbrinkman.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: snippet-box
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - snippet-box.homelab.bartbrinkman.nl
+      secretName: snippet-box-tls
