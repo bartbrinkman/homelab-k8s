@@ -38,6 +38,8 @@ spec:
                 secretKeyRef:
                   name: snipe-it
                   key: mysql-root-password
+            - name: APP_URL
+              value: APP_URL=https://snipe-it.homelab.bartbrinkman.nl
             - name: APP_KEY
               valueFrom:
                 secretKeyRef:
