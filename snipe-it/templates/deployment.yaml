@@ -27,11 +27,23 @@ spec:
               value: '1000'
             - name: TZ
               value: UTC
+            - name: MYSQL_PORT_3306_TCP_ADDR
+              value: mysql
+            - name: MYSQL_DATABASE
+              value: snipe-it
+            - name: MYSQL_USER
+              value: root
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: snipe-it
+                  key: mysql-root-password
             - name: APP_KEY
               valueFrom:
                 secretKeyRef:
                   name: snipe-it
                   key: app-key
+            
           image: 'snipe/snipe-it:v6.0.4'
           imagePullPolicy: IfNotPresent
           livenessProbe:
