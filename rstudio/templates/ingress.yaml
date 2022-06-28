@@ -22,7 +22,6 @@ spec:
                 port: {{ $svcPort }}
           {{- end }}
     {{- end }}
-  {{- end }}
   tls:
     - hosts:
         - rstudio.homelab.bartbrinkman.nl
