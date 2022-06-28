@@ -1,20 +1,19 @@
 rstudio:
 
-  ingress: 
-    enabled: true
-    ingressClassName: nginx
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt
-    hosts:
-    - host: rstudio.homelab.bartbrinkman.nl
-      paths:
-      - path: /
-    tls:
-    - secretName: rstudio-tls
-      hosts:
-      - rstudio.homelab.bartbrinkman.nl
-
   service:
+    ingress: 
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+      - host: rstudio.homelab.bartbrinkman.nl
+        paths:
+        - path: /
+      tls:
+      - secretName: rstudio-tls
+        hosts:
+        - rstudio.homelab.bartbrinkman.nl
     openshiftRoute:
       enabled: false
     openshift:
