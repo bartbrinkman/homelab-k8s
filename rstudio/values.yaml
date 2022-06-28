@@ -23,3 +23,5 @@ rstudio:
 
   password: stupid
         
+  serviceAccount:
+    create: true
