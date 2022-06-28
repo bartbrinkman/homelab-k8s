@@ -23,6 +23,6 @@ version: 0.1.0
 appVersion: "1.0"
 
 dependencies:
-- name: rstudio
+- name: rstudio-workbench
   version: 0.5.15
   repository: https://helm.rstudio.com

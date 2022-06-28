@@ -1,4 +1,4 @@
-rstudio:
+rstudio-workbench:
   ingress:
     enabled: true
     ingressClassName: nginx
