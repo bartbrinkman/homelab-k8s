@@ -1,5 +1,3 @@
-{{- $fullName := include "rstudio.fullname" . -}}
-{{- $svcPort := .Values.service.port -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -10,18 +8,16 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    {{- range .Values.service.ingress.hosts }}
-    - host: {{ .host | quote }}
+    - host: rstudio.homelab.bartbrinkman.nl
       http:
         paths:
-          {{- range .paths }}
-          - path: {{ . }}
-            backend:
+          - backend:
               service:
-                name: {{ $fullName }}
-                port: {{ $svcPort }}
-          {{- end }}
-    {{- end }}
+                name: rstudio
+                port:
+                  number: {{ .Values.service.port }}
+            path: /
+            pathType: Prefix
   tls:
     - hosts:
         - rstudio.homelab.bartbrinkman.nl
