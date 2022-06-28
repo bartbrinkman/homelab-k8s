@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: rstudio
+  namespace: rstudio
+spec:
+  ingressClassName: nginx
+  rules:
+    {{- range .Values.service.ingress.hosts }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          {{- range .paths }}
+          - path: {{ . }}
+            backend:
+              service:
+                name: {{ $fullName }}
+                port: {{ $svcPort }}
+          {{- end }}
+    {{- end }}
+  {{- end }}
+  tls:
+    - hosts:
+        - rstudio.homelab.bartbrinkman.nl
+      secretName: rstudio-tls
+
+

@@ -2,7 +2,7 @@ rstudio:
 
   service:
     ingress: 
-      enabled: true
+      enabled: false
       ingressClassName: nginx
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt
@@ -24,3 +24,4 @@ rstudio:
         
   serviceAccount:
     create: true
+    name: rstudio
