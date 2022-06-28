@@ -15,7 +15,7 @@ spec:
               service:
                 name: rstudio
                 port:
-                  number: {{ .Values.service.port }}
+                  number: {{ .Values.rstudio.service.port }}
             path: /
             pathType: Prefix
   tls:

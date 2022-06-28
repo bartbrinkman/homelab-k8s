@@ -1,0 +1,6 @@
+dependencies:
+- name: rstudio
+  repository: https://maastrichtu-ids.github.io/dsri-helm-charts/
+  version: 0.1.28
+digest: sha256:000b19255b6143ee0e36d0b9b40846ef67ddd4896bbcb0674f9e2436cadc4ef5
+generated: "2022-06-28T17:06:55.165117954+02:00"
