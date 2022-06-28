@@ -20,4 +20,6 @@ rstudio:
     openshift:
       tls:
         enabled: false 
+
+  password: stupid
         
