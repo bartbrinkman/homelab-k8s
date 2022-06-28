@@ -1,4 +1,5 @@
-rstudio-workbench:
+rstudio:
+
   ingress: 
     enabled: true
     ingressClassName: nginx
@@ -12,4 +13,11 @@ rstudio-workbench:
     - secretName: rstudio-tls
       hosts:
       - rstudio.homelab.bartbrinkman.nl
+
+  service:
+    openshiftRoute:
+      enabled: false
+    openshift:
+      tls:
+        enabled: false 
         
