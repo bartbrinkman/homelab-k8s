@@ -1,11 +1,15 @@
 rstudio-workbench:
-  ingress:
+  ingress: 
     enabled: true
     ingressClassName: nginx
-    host: rstudio.homelab.bartbrinkman.nl
-    tls: true
-    tlsSecret: rstudio-tls
     annotations:
-        cert-manager.io/cluster-issuer: letsencrypt
-        nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/start?rd=https://$host$request_uri$is_args$args
-        nginx.ingress.kubernetes.io/auth-url: https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/auth
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+    - host: rstudio.homelab.bartbrinkman.nl
+      paths:
+      - path: /
+    tls:
+    - secretName: rstudio-tls
+      hosts:
+      - rstudio.homelab.bartbrinkman.nl
+        
