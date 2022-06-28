@@ -123,3 +123,12 @@ metadata:
     name: grocy
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rstudio
+  labels:
+    name: rstudio
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
