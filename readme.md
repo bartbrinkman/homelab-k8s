@@ -1,7 +1,7 @@
 ## example kubeadm (assuming single control plane and flannel)
 
 ```
-kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=<ip-address>
+kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 ```
 kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
