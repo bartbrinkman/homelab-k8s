@@ -1,3 +1,5 @@
-# mysql:
-#  auth:
-#    existingSecret: mysql
+mysql:
+  image:
+    debug: true
+  auth:
+    existingSecret: mysql
