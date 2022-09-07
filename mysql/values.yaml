@@ -3,3 +3,15 @@ mysql:
     debug: true
   auth:
     existingSecret: mysql
+  initdbScripts:
+    homelab.sh: |
+      #!/bin/bash -e
+      . /opt/bitnami/scripts/libmysql.sh
+      mysql_ensure_database_exists 'snipe-it'
+  primary:
+    startupProbe:
+      enabled: false
+    readinessProbe:
+      enabled: false
+    livenessProbe:
+      enabled: false
