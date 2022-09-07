@@ -1,3 +1,3 @@
-mysql:
-  auth:
-    existingSecret: mysql
+# mysql:
+#  auth:
+#    existingSecret: mysql
