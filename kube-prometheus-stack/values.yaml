@@ -24,6 +24,12 @@ kube-prometheus-stack:
       enabled: false
     tls:
       enabled: false
+    prometheusConfigReloader:
+      resources:
+        requests:
+          cpu: 0m
+        limits:
+          cpu: 0m
 
   grafana:
     ingress: 
@@ -38,12 +44,7 @@ kube-prometheus-stack:
         hosts:
         - grafana.homelab.bartbrinkman.nl  
         
-  prometheusConfigReloader:
-    resources:
-      requests:
-        cpu: 0m
-      limits:
-        cpu: 0m
+
 
   prometheus:
     prometheusSpec:
