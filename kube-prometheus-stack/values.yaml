@@ -41,7 +41,9 @@ kube-prometheus-stack:
   prometheusConfigReloader:
     resources:
       requests:
-        cpu: '0'
+        cpu: 0m
+      limits:
+        cpu: 0m
 
   prometheus:
     prometheusSpec:
@@ -51,3 +53,8 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 50Gi
+      resources:
+        requests:
+          cpu: 0m
+        limits:
+          cpu: 0m
