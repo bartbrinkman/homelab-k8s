@@ -37,6 +37,11 @@ kube-prometheus-stack:
       - secretName: grafana-general-tls
         hosts:
         - grafana.homelab.bartbrinkman.nl  
+        
+prometheusConfigReloader:
+  resources:
+    requests:
+      cpu: '0'
 
   prometheus:
     prometheusSpec:
@@ -46,6 +51,3 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 50Gi
-      resources:
-        requests:
-          cpu: 0
