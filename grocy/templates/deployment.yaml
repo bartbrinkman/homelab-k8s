@@ -24,7 +24,7 @@ spec:
           imagePullPolicy: IfNotPresent
           name: grocy
           ports:
-            - containerPort: 9283
+            - containerPort: 80
               name: http
               protocol: TCP
           volumeMounts:
