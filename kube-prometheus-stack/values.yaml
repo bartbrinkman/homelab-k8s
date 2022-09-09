@@ -22,6 +22,8 @@ kube-prometheus-stack:
         enabled: false
     tlsProxy:
       enabled: false
+    tls:
+      enabled: false
 
   grafana:
     ingress: 
