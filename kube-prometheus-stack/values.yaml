@@ -46,3 +46,6 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 50Gi
+      resources:
+        requests:
+          cpu: 0
