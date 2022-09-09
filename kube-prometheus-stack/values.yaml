@@ -38,10 +38,10 @@ kube-prometheus-stack:
         hosts:
         - grafana.homelab.bartbrinkman.nl  
         
-prometheusConfigReloader:
-  resources:
-    requests:
-      cpu: '0'
+  prometheusConfigReloader:
+    resources:
+      requests:
+        cpu: '0'
 
   prometheus:
     prometheusSpec:
