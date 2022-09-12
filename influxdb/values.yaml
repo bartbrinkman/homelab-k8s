@@ -1,0 +1,11 @@
+influxdb:
+  setDefaultUser:
+    enabled: true
+  ingress: 
+    enabled: true
+    tls: true
+    secretName: influxdb-general-tls
+    hostname: influxdb.homelab.bartbrinkman.nl
+    className: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
