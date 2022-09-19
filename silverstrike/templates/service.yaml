@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: silverstrike
+  namespace: snipe-it
+spec:
+  ports:
+    - name: http
+      port: 8000
+      protocol: TCP
+      targetPort: http
+  selector:
+    app.kubernetes.io/instance: silverstrike
+    app.kubernetes.io/name: silverstrike
+  type: ClusterIP

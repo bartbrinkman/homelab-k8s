@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: silverstrike
+  namespace: finance
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: silverstrike.homelab.bartbrinkman.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: silverstrike
+                port:
+                  number: 8000
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - silverstrike.homelab.bartbrinkman.nl
+      secretName: silverstrike-tls
