@@ -29,7 +29,7 @@ spec:
             - name: ALLOWED_HOSTS
               value: '*'
             - name: DATABASE_URL
-              value: postgres://silverstrike:{{ get $secret.data "postgres-password" }}@postgres/silverstrike
+              value: postgres://silverstrike:silverstrike@postgres/silverstrike
             - name: SECRET_KEY
               valueFrom:
                 secretKeyRef:
@@ -48,10 +48,7 @@ spec:
             - name: POSTGRES_USER
               value: silverstrike
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: silverstrike
-                  key: postgres-password
+              value: silverstrike
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: vol
