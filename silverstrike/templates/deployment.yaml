@@ -29,7 +29,7 @@ spec:
             - name: ALLOWED_HOSTS
               value: '*'
             - name: DATABASE_URL
-              value: postgres://silverstrike:{{ get $secret "data" "postgres-password" }}@postgres/silverstrike
+              value: postgres://silverstrike:{{ get $secret.data "postgres-password" }}@postgres/silverstrike
             - name: SECRET_KEY
               valueFrom:
                 secretKeyRef:
