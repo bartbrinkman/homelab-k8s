@@ -49,6 +49,8 @@ spec:
               value: silverstrike
             - name: POSTGRES_PASSWORD
               value: silverstrike
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: vol
