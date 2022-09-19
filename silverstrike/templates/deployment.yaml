@@ -1,0 +1,64 @@
+{{- $secret := (lookup "v1" "Secret" .Release.Namespace "silverstrike") -}}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: silverstrike
+  namespace: finance
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: silverstrike
+      app.kubernetes.io/name: silverstrike
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: silverstrike
+        app.kubernetes.io/name: silverstrike
+    spec:
+      automountServiceAccountToken: true
+      containers:
+        - image: 'simhnna/silverstrike'
+          imagePullPolicy: IfNotPresent
+          name: silverstrike
+          env:
+            - name: ALLOWED_HOSTS
+              value: '*'
+            - name: DATABASE_URL
+              value: postgres://silverstrike:{{ $secret.data.postgres-password }}@postgres/silverstrike
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: silverstrike
+                  key: secret-key
+          ports:
+            - containerPort: 8000
+              name: http
+              protocol: TCP
+        - image: 'postgres:10.3'
+          imagePullPolicy: IfNotPresent
+          name: postgres
+          env:
+            - name: POSTGRES_DB
+              value: silverstrike
+            - name: POSTGRES_USER
+              value: silverstrike
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: silverstrike
+                  key: postgres-password
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: vol
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      serviceAccountName: default
+      volumes:
+        - name: vol
+          persistentVolumeClaim:
+            claimName: silverstrike

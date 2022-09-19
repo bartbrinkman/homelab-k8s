@@ -132,3 +132,12 @@ metadata:
     name: rstudio
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: finance
+  labels:
+    name: finance
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
