@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: budgetzero
+  namespace: finance
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: budgetzero
+      app.kubernetes.io/name: budgetzero
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: budgetzero
+        app.kubernetes.io/name: budgetzero
+    spec:
+      containers:
+        - image: 'budgetzero/budgetzero'
+          imagePullPolicy: IfNotPresent
+          name: budgetzero
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP

@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: budgetzero
+  namespace: finance
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: budgetzero.homelab.bartbrinkman.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: budgetzero
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - budgetzero.homelab.bartbrinkman.nl
+      secretName: budgetzero-tls
