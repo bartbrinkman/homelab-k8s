@@ -141,3 +141,12 @@ metadata:
     name: finance
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: keda
+  labels:
+    name: keda
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
