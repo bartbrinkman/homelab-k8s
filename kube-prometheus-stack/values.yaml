@@ -57,18 +57,9 @@ kube-prometheus-stack:
           cpu: 0m
         limits:
           cpu: 0m
-      podMonitorNamespaceSelector:
-        any: true
-      podMonitorSelector: {}
-      podMonitorSelectorNilUsesHelmValues: false
-      ruleNamespaceSelector:
-        any: true
-      ruleSelector: {}
-      ruleSelectorNilUsesHelmValues: false
-      serviceMonitorNamespaceSelector:
-        any: true
-      serviceMonitorSelector: {}
       serviceMonitorSelectorNilUsesHelmValues: false
+      serviceMonitorSelector: {}
+      serviceMonitorNamespaceSelector: {}
 
 
         
