@@ -23,8 +23,6 @@ ingress-nginx:
         enabled: true
         additionalLabels:
           release: "prometheus"
-
-
       
     podSecurityPolicy:
       enabled: true

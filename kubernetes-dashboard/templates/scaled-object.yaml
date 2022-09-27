@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: kubernetes-dashboard-scaledobject
+  namespace: kubernetes-dashboard
+spec:
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  pollingInterval: 5
+  scaleTargetRef:
+    name: kubernetes-dashboard
+  triggers:
+  - type: prometheus
+    metadata:
+      serverAddress: http://kube-prometheus-stack-prometheus.monitoring:9090
+      metricName: nginx_ingress_controller_requests
+      threshold: '0'
+      query: sum(rate(nginx_ingress_controller_requests{exported_namespace="kubernetes-dashboard"}[2m]))
