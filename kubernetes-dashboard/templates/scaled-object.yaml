@@ -4,7 +4,8 @@ metadata:
   name: kubernetes-dashboard-scaledobject
   namespace: kubernetes-dashboard
 spec:
-  minReplicaCount: 0
+  idleReplicaCount: 0
+  minReplicaCount: 1
   maxReplicaCount: 1
   pollingInterval: 5
   scaleTargetRef:
