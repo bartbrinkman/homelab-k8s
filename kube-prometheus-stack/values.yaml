@@ -46,6 +46,8 @@ kube-prometheus-stack:
 
   prometheus:
     prometheusSpec:
+      podMonitorSelectorNilUsesHelmValues: false
+      serviceMonitorSelectorNilUsesHelmValues: false
       storageSpec:
         volumeClaimTemplate:
           spec:
