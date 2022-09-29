@@ -1,0 +1,20 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: snipe-it-scaledobject
+  namespace: snipe-it
+spec:
+  idleReplicaCount: 0
+  minReplicaCount: 1
+  maxReplicaCount: 1
+  pollingInterval: 5
+  cooldownPeriod: 300
+  scaleTargetRef:
+    name: snipe-it
+  triggers:
+  - type: prometheus
+    metadata:
+      serverAddress: http://kube-prometheus-stack-prometheus.monitoring:9090
+      metricName: nginx_ingress_controller_requests
+      threshold: '0.5'
+      query: group(rate(nginx_ingress_controller_requests{exported_namespace="snipe-it"}[2m]) > 0)
