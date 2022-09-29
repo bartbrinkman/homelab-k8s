@@ -17,4 +17,4 @@ spec:
       serverAddress: http://kube-prometheus-stack-prometheus.monitoring:9090
       metricName: nginx_ingress_controller_requests
       threshold: '0.5'
-      query: group(rate(nginx_ingress_controller_requests{exported_namespace="kubernetes-dashboard"}[2m]))
+      query: group(rate(nginx_ingress_controller_requests{exported_namespace="kubernetes-dashboard"}[2m]) > 0)
