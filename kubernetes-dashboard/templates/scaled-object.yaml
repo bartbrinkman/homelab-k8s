@@ -8,7 +8,7 @@ spec:
   minReplicaCount: 1
   maxReplicaCount: 1
   pollingInterval: 5
-  cooldownPeriod: 10
+  cooldownPeriod: 10 # debug, should be few mins (300)
   scaleTargetRef:
     name: kubernetes-dashboard
   triggers:
@@ -16,5 +16,5 @@ spec:
     metadata:
       serverAddress: http://kube-prometheus-stack-prometheus.monitoring:9090
       metricName: nginx_ingress_controller_requests
-      threshold: '0.01'
-      query: sum(rate(nginx_ingress_controller_requests{exported_namespace="kubernetes-dashboard"}[2m]))
+      threshold: '0.5'
+      query: sum(count_over_time(nginx_ingress_controller_requests{exported_namespace="kubernetes-dashboard"}[1m]))
