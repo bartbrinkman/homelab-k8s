@@ -41,7 +41,8 @@ ingress:
   enabled: true
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
-  #  kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/start?rd=https://$host$request_uri$is_args$args
+    nginx.ingress.kubernetes.io/auth-url: https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/auth
   hosts:
    - host: code-server.homelab.bartbrinkman.nl
      paths:
