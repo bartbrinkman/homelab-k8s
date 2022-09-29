@@ -8,7 +8,7 @@ spec:
   minReplicaCount: 1
   maxReplicaCount: 1
   pollingInterval: 5
-  cooldownPeriod: 10 # debug, should be few mins (300)
+  cooldownPeriod: 300
   scaleTargetRef:
     name: kubernetes-dashboard
   triggers:
