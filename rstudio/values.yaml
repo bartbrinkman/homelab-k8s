@@ -6,6 +6,7 @@ rstudio:
       ingressClassName: nginx
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt
+        nginx.ingress.kubernetes.io/custom-http-errors: "503"
       hosts:
       - host: rstudio.homelab.bartbrinkman.nl
         paths:

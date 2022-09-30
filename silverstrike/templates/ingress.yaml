@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/custom-http-errors: "503"
   name: silverstrike
   namespace: finance
 spec:
