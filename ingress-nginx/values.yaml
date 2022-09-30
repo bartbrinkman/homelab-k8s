@@ -34,7 +34,7 @@ ingress-nginx:
       enabled: false
 
     config:
-      custom-http-errors: "404,503"
+      custom-http-errors: "404,503,50x"
       
   defaultBackend:
     enabled: true
