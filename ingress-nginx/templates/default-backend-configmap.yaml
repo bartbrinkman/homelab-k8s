@@ -3,21 +3,58 @@ kind: ConfigMap
 metadata:
   name: custom-error-pages
 data:
-  404: |
-    <!DOCTYPE html>
-    <html>
-      <head><title>PAGE NOT FOUND</title></head>
-      <body>Thanks for trying!</body>
-    </html>
   503: |
     <!DOCTYPE html>
     <html>
-      <head><title>CUSTOM SERVICE UNAVAILABLE</title></head>
-      <body>I'm sorry!</body>
-    </html>
-  50x: |
-    <!DOCTYPE html>
-    <html>
-      <head><title>CUSTOM SERVICE UNAVAILABLE</title></head>
-      <body>I'm sorry!</body>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans">
+      <style>
+        #background-video {
+          height: 100vh;
+          width: 100vw;
+          object-fit: cover;
+          position: fixed;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          z-index: -1;
+        }
+        * {
+          color: white;
+          font-family: 'Fira Sans', serif;
+          font-weight: bold;
+        }
+        h1 {
+          font-size: 3vw;
+          margin-top: 5vh;
+          margin-left: 5vw;
+          margin-bottom: 0;
+        }
+        h2 {
+          font-size: 1.5vw;
+          margin-left: 5vw;
+        }
+      </style>
+
+      <video id="background-video" autoplay loop muted poster="">
+        <source src="https://storage.googleapis.com/homelab-bartbrinkman-nl/flickering-television.mp4" type="video/mp4">
+      </video>
+
+      <h1>STAND BY</h1>
+      <h2>YOU WILL BE REDIRECTED SOON</h2>
+
+      <script
+        src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous"></script>
+
+      <script>
+        const interval = setInterval(() => {
+          let url = window.location.href
+          $.ajax(url)
+            .done(() => {
+              window.location.replace(url)
+            })
+        }, 750)
+      </script>
     </html>
