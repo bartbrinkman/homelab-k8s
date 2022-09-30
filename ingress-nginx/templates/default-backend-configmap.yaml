@@ -15,3 +15,9 @@ data:
       <head><title>CUSTOM SERVICE UNAVAILABLE</title></head>
       <body>I'm sorry!</body>
     </html>
+  50x: |
+    <!DOCTYPE html>
+    <html>
+      <head><title>CUSTOM SERVICE UNAVAILABLE</title></head>
+      <body>I'm sorry!</body>
+    </html>

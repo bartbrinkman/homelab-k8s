@@ -51,6 +51,8 @@ ingress-nginx:
           path: "404.html"
         - key: "503"
           path: "503.html"
+        - key: "50x"
+          path: "50x.html"
     extraVolumeMounts:
     - name: custom-error-pages
       mountPath: /www
