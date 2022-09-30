@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: custom-error-pages
+data:
+  503: |
+    <!DOCTYPE html>
+    <html>
+      <head><title>hi!</title></head>
+      <body>this is my 503 now.</body>
+    </html>
