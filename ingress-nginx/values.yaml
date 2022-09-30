@@ -34,7 +34,7 @@ ingress-nginx:
       enabled: false
 
     config:
-      custom-http-errors: "503"
+      custom-http-errors: "404,503"
       
   defaultBackend:
     enabled: true
@@ -47,6 +47,8 @@ ingress-nginx:
       configMap:
         name: custom-error-pages
         items:
+        - key: "404"
+          path: "404.html"
         - key: "503"
           path: "503.html"
     extraVolumeMounts:
