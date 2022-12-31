@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: factorio
+  namespace: factorio
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: factorio
+      app.kubernetes.io/name: factorio
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: factorio
+        app.kubernetes.io/name: factorio
+    spec:
+      automountServiceAccountToken: true
+      containers:
+        - image: 'factoriotools/factorio:stable'
+          imagePullPolicy: IfNotPresent
+          name: factorio
+          ports:
+            - containerPort: 27015
+              name: http
+              protocol: TCP
+            - containerPort: 34197
+              name: http
+              protocol: UDP
+          volumeMounts:
+            - mountPath: /factorio
+              name: vol
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      serviceAccountName: default
+      volumes:
+        - name: vol
+          persistentVolumeClaim:
+            claimName: factorio

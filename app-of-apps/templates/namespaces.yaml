@@ -150,3 +150,12 @@ metadata:
     name: keda
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorio
+  labels:
+    name: factorio
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
