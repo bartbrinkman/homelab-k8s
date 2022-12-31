@@ -25,10 +25,10 @@ spec:
           name: factorio
           ports:
             - containerPort: 27015
-              name: http
+              name: rcon
               protocol: TCP
             - containerPort: 34197
-              name: http
+              name: server
               protocol: UDP
           volumeMounts:
             - mountPath: /factorio
