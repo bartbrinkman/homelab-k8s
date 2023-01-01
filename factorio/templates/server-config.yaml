@@ -4,6 +4,6 @@ metadata:
   name: server-config
 data:
   map-gen-settings.json: |
-    {{- range .Files.Lines "../config/map-gen-settings.json" }}
+    {{- range .Files.Lines "config/map-gen-settings.json" }}
     {{ . }}{{ end }}
     
