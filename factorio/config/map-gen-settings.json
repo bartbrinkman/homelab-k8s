@@ -16,7 +16,7 @@
     "_starting_area_comment": "Multiplier for 'biter free zone radius'",
     "starting_area": 1,
   
-    "peaceful_mode": false,
+    "peaceful_mode": true,
     "autoplace_controls":
     {
       "coal": {"frequency": 1, "size": 1, "richness": 1},
@@ -45,7 +45,7 @@
       "cliff_elevation_interval": 40,
   
       "_richness_comment": "Called 'cliff continuity' in the map generator GUI. 0 will result in no cliffs, 10 will make all cliff rows completely solid",
-      "richness": 1
+      "richness": 0
     },
   
     "_property_expression_names_comment":
@@ -74,5 +74,5 @@
     ],
   
     "_seed_comment": "Use null for a random seed, number for a specific seed.",
-    "seed": null
+    "seed": ">>>eNpjZGBk8AJiIGiwB2EOluT8xBwYD4S5kvMLClKLdPOLUpGFOZOLSlNSdfMzURWn5qXmVuomJRZDFUNM5sgsys9DN4G1uCQ/D1WkpCg1tRhZhLu0KDEvszQXXS8Do7foxJCGFjkGEP5fz6Dw/z8IA1kPgDaCMANjA0QlUAwGWJNzMtPSGBgUHIHYCayIgbFaZJ37w6op9owQNXoOUMYHqMiBJJiIJ4zh54BTSgXGMEEyxxgMPiMxIJaWAK2AquJwQDAgki0gSUbG3rdbF3w/dsGO8c/Kj5d8kxLsGQ1dRd59MFpnB5RkB3mBCU7MmgkCO2FeYYCZ+cAeKnXTnvHsGRB4Y8/ICtIhAiIcLIDEAW9mBkYBPiBrQQ+QUJBhgDnNDmaMiANjGhh8g/nkMYxx2R7dH8CAsAEZLgciToAIsIVwlzFCmA79DowO8jBZSYQSoH4jBmQ3pCB8eBJm7WEk+9EcghkRyP5AE1FxwBINXCALU+DEC2a4a4DheYEdxnOY78DIDGKAVH0BikF4IBmYURBawAEc3MwMCABMG/fsJt8CABG0n9U=<<<"
 }
