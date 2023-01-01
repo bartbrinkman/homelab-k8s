@@ -4,6 +4,7 @@ metadata:
   name: factorio
   namespace: factorio
 spec:
+  type: NodePort
   ports:
     - name: rcon
       port: 27015
