@@ -26,7 +26,7 @@ spec:
             - sh 
             - -c
             - |
-              mkdir -p /tmp/config &&
+              mkdir -p /factorio/config &&
               cp /tmp/config/* /factorio/config/
           volumeMounts:
             - name: server-config
