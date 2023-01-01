@@ -8,12 +8,11 @@ spec:
     - name: rcon
       port: 27015
       protocol: TCP
-      targetPort: rcon
+      targetPort: 27015
     - name: server
       port: 34197
       protocol: UDP
-      targetPort: server
+      targetPort: 34197
   selector:
     app.kubernetes.io/instance: factorio
     app.kubernetes.io/name: factorio
-  type: NodePort
