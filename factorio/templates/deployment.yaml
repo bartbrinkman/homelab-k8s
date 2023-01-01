@@ -22,7 +22,12 @@ spec:
       initContainers:
         - name: copy-server-config
           image: busybox
-          command: ['sh', '-c', 'cp /tmp/config/* /factorio/config/']
+          command: 
+            - sh 
+            - -c
+            - |
+              mkdir -p /tmp/config &&
+              cp /tmp/config/* /factorio/config/
           volumeMounts:
             - name: server-config
               mountPath: /tmp/config
