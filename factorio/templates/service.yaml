@@ -4,18 +4,16 @@ metadata:
   name: factorio
   namespace: factorio
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: rcon
       port: 27015
-      protocol: TCP
       targetPort: 27015
-      nodePort: 27015
+      protocol: TCP
     - name: server
       port: 34197
-      protocol: UDP
       targetPort: 34197
-      nodePort: 34197
+      protocol: UDP
   selector:
     app.kubernetes.io/instance: factorio
     app.kubernetes.io/name: factorio
