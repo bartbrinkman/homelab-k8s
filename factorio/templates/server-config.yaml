@@ -6,4 +6,10 @@ data:
   map-gen-settings.json: |
     {{- range .Files.Lines "config/map-gen-settings.json" }}
     {{ . }}{{ end }}
+  map-settings.json: |
+    {{- range .Files.Lines "config/map-settings.json" }}
+    {{ . }}{{ end }}
+  server-settings.json: |
+    {{- range .Files.Lines "config/server-settings.json" }}
+    {{ . }}{{ end }}
     

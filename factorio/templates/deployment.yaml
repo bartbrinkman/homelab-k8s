@@ -19,6 +19,15 @@ spec:
         app.kubernetes.io/name: factorio
     spec:
       automountServiceAccountToken: true
+      initContainers:
+        - name: copy-server-config
+          image: busybox
+          command: ['sh', '-c', 'cp /tmp/config/* /factorio/config/']
+          volumeMounts:
+            - name: server-config
+              mountPath: /tmp/config
+            - name: vol
+              mountPath: /factorio
       containers:
         - image: 'factoriotools/factorio:stable'
           imagePullPolicy: IfNotPresent
@@ -31,12 +40,8 @@ spec:
               name: server
               protocol: UDP
           volumeMounts:
-            - mountPath: /factorio
-              name: vol
-            - name: server-config
-              mountPath: /factorio/config/map-gen-settings.json
-              subPath: map-gen-settings.json
-              readOnly: false
+            - name: vol 
+              mountPath: /factorio
       dnsPolicy: ClusterFirst
       enableServiceLinks: true
       serviceAccountName: default
@@ -50,3 +55,7 @@ spec:
             items:
               - key: map-gen-settings.json
                 path: map-gen-settings.json
+              - key: map-settings.json
+                path: map-settings.json
+              - key: server-settings.json
+                path: server-settings.json
