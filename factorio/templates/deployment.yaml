@@ -33,14 +33,10 @@ spec:
           volumeMounts:
             - mountPath: /factorio
               name: vol
-            - name: map-gen-settings.json
+            - name: server-config
               mountPath: /factorio/config/map-gen-settings.json
               subPath: map-gen-settings.json
               readOnly: true
-              valueFrom:
-                configMapKeyRef:
-                  name: server-config
-                  key: map-get-settings.json
       dnsPolicy: ClusterFirst
       enableServiceLinks: true
       serviceAccountName: default
