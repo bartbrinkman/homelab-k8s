@@ -12,6 +12,9 @@ ingress-nginx:
     service:
       enabled: true
       type: ClusterIP
+      nodePorts:
+        tcp:
+        udp: 
 
     metrics:
       enabled: true
@@ -52,3 +55,8 @@ ingress-nginx:
     extraVolumeMounts:
     - name: custom-error-pages
       mountPath: /www
+
+  tcp:
+    27015: "factorio/factorio:27015"
+  udp:
+    34197: "factorio/factorio:34197"
