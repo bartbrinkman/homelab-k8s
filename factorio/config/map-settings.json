@@ -8,7 +8,7 @@
     },
     "pollution":
     {
-      "enabled": true,
+      "enabled": false,
       "_comment_min_to_diffuse_1": "these are values for 60 ticks (1 simulated second)",
       "_comment_min_to_diffuse_2": "amount that is diffused to neighboring chunk",
       "diffusion_ratio": 0.02,
@@ -25,14 +25,14 @@
     },
     "enemy_evolution":
     {
-      "enabled": true,
+      "enabled": false,
       "time_factor": 0.000004,
       "destroy_factor": 0.002,
       "pollution_factor": 0.0000009
     },
     "enemy_expansion":
     {
-      "enabled": true,
+      "enabled": false,
       "min_base_spacing": 3,
       "max_expansion_distance": 7,
       "friendly_base_influence_radius": 2,

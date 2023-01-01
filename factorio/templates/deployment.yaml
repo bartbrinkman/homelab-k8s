@@ -46,6 +46,8 @@ spec:
               name: server
               protocol: UDP
           volumeMounts:
+            - name: server-config
+              mountPath: /tmp/config
             - name: vol 
               mountPath: /factorio
       dnsPolicy: ClusterFirst
