@@ -12,11 +12,6 @@ ingress-nginx:
     service:
       enabled: true
       type: ClusterIP
-      nodePorts:
-        tcp:
-          - 27015:27015
-        udp: 
-          - 34197:34197
 
     metrics:
       enabled: true
