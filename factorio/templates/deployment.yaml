@@ -36,7 +36,6 @@ spec:
             - name: server-config
               mountPath: /factorio/config/map-gen-settings.json
               subPath: map-gen-settings.json
-              readOnly: true
       dnsPolicy: ClusterFirst
       enableServiceLinks: true
       serviceAccountName: default
