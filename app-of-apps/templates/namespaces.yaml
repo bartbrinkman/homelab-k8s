@@ -159,3 +159,12 @@ metadata:
     name: factorio
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ethereum
+  labels:
+    name: ethereum
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
