@@ -20,9 +20,6 @@ spec:
       - name: bootnode
         image: ethereum/client-go:alltools-release-1.10
         imagePullPolicy: IfNotPresent
-        resources:
-          limits:
-            cpu: 0.5
         command: ["/bin/sh"]
         args:
         - "-c"
