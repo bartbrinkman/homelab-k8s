@@ -5,7 +5,7 @@ metadata:
   namespace: ethereum
 spec:
   selector:
-    app.kubernetes.io/name: bootnode-registrar
+    app.kubernetes.io/name: bootnode
   clusterIP: None
   ports:
     - name: discovery
