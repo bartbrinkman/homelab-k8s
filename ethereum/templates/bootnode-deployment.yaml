@@ -47,7 +47,7 @@ spec:
           ports:
             - containerPort: 8080
       initContainers:
-        - name: genkey
+        - name: bootnode-genkey
           image: ethereum/client-go:alltools-release-1.10
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]

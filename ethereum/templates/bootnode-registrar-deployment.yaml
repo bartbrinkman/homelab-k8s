@@ -15,11 +15,11 @@ spec:
         app.kubernetes.io/name: bootnode-registrar
     spec:
       containers:
-      - name: bootnode-registrar
-        image: jpoon/bootnode-registrar
-        imagePullPolicy: IfNotPresent
-        env:
-        - name: BOOTNODE_SERVICE
-          value: "bootnode.ethereum.svc.cluster.local"
-        ports:
-        - containerPort: 9898
+        - name: bootnode-registrar
+          image: jpoon/bootnode-registrar
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: BOOTNODE_SERVICE
+              value: "bootnode.ethereum.svc.cluster.local"
+          ports:
+            - containerPort: 9898
