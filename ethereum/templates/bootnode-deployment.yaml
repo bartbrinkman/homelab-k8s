@@ -57,6 +57,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /etc/bootnode
-        volumes:
-          - name: data
-            emptyDir: {}
+      volumes:
+        - name: data
+          emptyDir: {}
