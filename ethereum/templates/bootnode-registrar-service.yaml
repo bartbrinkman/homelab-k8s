@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bootnode-registrar
+  namespace: ethereum
+spec:
+  selector:
+    app.kubernetes.io/name: bootnode-registrar
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 9898

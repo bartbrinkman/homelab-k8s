@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bootnode-registrar
+  namespace: ethereum
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bootnode-registrar
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: bootnode-registrar
+    spec:
+      containers:
+      - name: bootnode-registrar
+        image: jpoon/bootnode-registrar
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: BOOTNODE_SERVICE
+          value: "bootnode.ethereum.svc.cluster.local"
+        ports:
+        - containerPort: 9898
