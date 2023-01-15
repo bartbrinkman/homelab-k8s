@@ -80,7 +80,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - |- 
+            - |
             apk add --no-cache curl; 
             CNT=0; 
             echo "retrieving bootnodes from $BOOTNODE_REGISTRAR_SVC" while [ $CNT -le 90 ] do curl -m 5 -s $BOOTNODE_REGISTRAR_SVC | xargs echo -n >> /geth/bootnodes; 
