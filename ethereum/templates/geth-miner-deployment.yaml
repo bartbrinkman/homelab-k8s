@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eth-geth-miner
-  namespace: the-project
+  name: geth-miner
+  namespace: ethereum
   labels:
     app.kubernetes.io/name: geth-miner
 spec:
@@ -23,20 +23,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --mine --etherbase=0 --networkid=${NETWORK_ID} --ethstats=${HOSTNAME}:${ETHSTATS_SECRET}@${ETHSTATS_SVC} --verbosity=5"
-          env:
-            - name: ETHSTATS_SVC
-              value: eth-ethstats.dcp
-            - name: ETHSTATS_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: eth-ethstats
-                  key: WS_SECRET
-            - name: NETWORK_ID
-              valueFrom:
-                configMapKeyRef:
-                  name: eth-geth
-                  key: networkid
+            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --mine --etherbase=0 --networkid=2482601 --verbosity=5"
           ports:
             - name: discovery-udp
               containerPort: 30303
@@ -104,4 +91,4 @@ spec:
           emptyDir: {} 
         - name: config 
           configMap: 
-            name: eth-geth
+            name: geth-miner

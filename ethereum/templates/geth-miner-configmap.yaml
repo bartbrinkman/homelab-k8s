@@ -1,12 +1,11 @@
 apiVersion: v1
-kind: Secret
+kind: ConfigMap
 metadata:
   name: geth-miner
   namespace: ethereum
-  annotations:
-    "helm.sh/hook": "pre-install"
   labels:
     app.kubernetes.io/name: geth-miner
-type: Opaque
 data:
-  password: "{{ randAlphaNum 24 | b64enc }}"
+  genesis.json: |
+    {{- range .Files.Lines "genesis.json" }}
+    {{ . }}{{ end }}
