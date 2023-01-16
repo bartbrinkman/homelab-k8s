@@ -64,13 +64,13 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "printf '$(ACCOUNT_SECRET)\n$(ACCOUNT_SECRET)\n' | geth account new"
+            - "printf '$(PASSWORD)\n$(PASSWORD)\n' | geth account new"
           env:
-            - name: ACCOUNT_SECRET
+            - name: PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: eth-geth-miner
-                  key: accountsecret
+                  name: geth-miner
+                  key: password
           volumeMounts:
             - name: data
               mountPath: /root/.ethereum
