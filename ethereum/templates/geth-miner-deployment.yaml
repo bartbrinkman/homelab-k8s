@@ -17,7 +17,7 @@ spec:
         app.kubernetes.io/name: geth-miner
     spec:
       containers:
-        - name: geth-miner
+        - name: geth
           image: ethereum/client-go:release-1.10
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]

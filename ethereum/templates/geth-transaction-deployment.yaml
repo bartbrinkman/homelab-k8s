@@ -17,7 +17,7 @@ spec:
         app.kubernetes.io/name: geth-transaction
     spec:
       containers:
-        - name: geth-tx
+        - name: geth
           image: ethereum/client-go:release-1.10
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
@@ -73,9 +73,9 @@ spec:
               done;
               echo "WARNING. unable to find bootnodes. continuing but geth may not be able to find any peers.";
               exit 0;
-              env: 
-                - name: BOOTNODE_REGISTRAR_SVC 
-                  value: eth-bootnode-registrar
+            env: 
+              - name: BOOTNODE_REGISTRAR_SVC 
+                value: bootnode-registrar
           volumeMounts: 
             - name: data 
               mountPath: /geth 
