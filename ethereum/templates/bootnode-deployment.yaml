@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: bootnode
 spec:
   replicas: 2
-  revisionHistoryLimit: 3
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: bootnode
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: bootnode
-          image: ethereum/client-go:alltools-release-1.10
+          image: ethereum/client-go:alltools-release-1.10.7
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:
@@ -28,14 +28,11 @@ spec:
             - name: data
               mountPath: /etc/bootnode
           ports:
-            - name: discovery-udp
+            - name: discovery
               containerPort: 30303
               protocol: UDP
-            - name: discovery-tcp
-              containerPort: 30303
-              protocol: TCP
         - name: bootnode-writeaddress
-          image: ethereum/client-go:alltools-release-1.10
+          image: ethereum/client-go:alltools-release-1.10.7
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:
@@ -53,7 +50,7 @@ spec:
             - containerPort: 8080
       initContainers:
         - name: bootnode-genkey
-          image: ethereum/client-go:alltools-release-1.10
+          image: ethereum/client-go:alltools-release-1.10.7
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:

@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: geth-transaction
 spec:
   replicas: 2
-  revisionHistoryLimit: 3
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: geth-transaction
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: geth
-          image: ethereum/client-go:release-1.10
+          image: ethereum/client-go:release-1.10.7
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:
@@ -39,7 +39,7 @@ spec:
               mountPath: /root/.ethereum
       initContainers:
         - name: init-genesis
-          image: ethereum/client-go:release-1.10
+          image: ethereum/client-go:release-1.10.7
           imagePullPolicy: IfNotPresent
           args:
           - "init"
@@ -50,7 +50,7 @@ spec:
           - name: config
             mountPath: /var/geth
         - name: get-bootnodes
-          image: ethereum/client-go:release-1.10
+          image: ethereum/client-go:release-1.10.7
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:

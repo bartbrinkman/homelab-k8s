@@ -10,11 +10,8 @@ spec:
     app.kubernetes.io/name: bootnode
   clusterIP: None
   ports:
-    - name: discovery-udp
+    - name: discovery
       port: 30301
       protocol: UDP
-    - name: discovery-tcp
-      port: 30301
-      protocol: TCP
     - name: http
       port: 8080
