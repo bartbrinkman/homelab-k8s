@@ -76,9 +76,9 @@ spec:
             env: 
               - name: BOOTNODE_REGISTRAR_SVC 
                 value: bootnode-registrar
-          volumeMounts: 
-            - name: data 
-              mountPath: /geth 
+            volumeMounts: 
+              - name: data 
+                mountPath: /geth 
       volumes: 
         - name: data 
           emptyDir: {} 
