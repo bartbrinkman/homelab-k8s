@@ -23,7 +23,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601 --verbosity 6 --mine"
+            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601 --verbosity 5 --mine"
           ports:
             - name: discovery-udp
               containerPort: 30303
