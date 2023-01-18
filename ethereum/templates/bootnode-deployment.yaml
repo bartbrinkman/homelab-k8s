@@ -23,7 +23,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "bootnode --nodekey=/etc/bootnode/node.key --verbosity 5"
+            - "bootnode --nodekey=/etc/bootnode/node.key --addr $(POD_IP):30301 --verbosity 5"
           volumeMounts:
             - name: data
               mountPath: /etc/bootnode
@@ -31,6 +31,11 @@ spec:
             - name: discovery
               containerPort: 30301
               protocol: UDP
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
         - name: bootnode-writeaddress
           image: ethereum/client-go:alltools-release-1.10
           imagePullPolicy: IfNotPresent
