@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: geth
-          image: ethereum/client-go:release-1.10.7
+          image: ethereum/client-go:v1.10.7
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:
@@ -35,7 +35,7 @@ spec:
               mountPath: /root/.ethereum
       initContainers:
         - name: init-genesis
-          image: ethereum/client-go:release-1.10.7
+          image: ethereum/client-go:v1.10.7
           imagePullPolicy: IfNotPresent
           args:
             - "init"
@@ -46,7 +46,7 @@ spec:
             - name: config
               mountPath: /var/geth
         - name: create-account
-          image: ethereum/client-go:release-1.10.7
+          image: ethereum/client-go:v1.10.7
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:
@@ -62,7 +62,7 @@ spec:
             - name: data
               mountPath: /root/.ethereum
         - name: get-bootnodes
-          image: ethereum/client-go:release-1.10.7
+          image: ethereum/client-go:v1.10.7
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:
