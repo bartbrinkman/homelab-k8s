@@ -24,6 +24,7 @@ spec:
           args:
             - "-c"
             - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601 --mine"
+            - "--etherbase=0"
           ports:
             - name: discovery-udp
               containerPort: 30303
