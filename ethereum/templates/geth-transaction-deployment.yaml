@@ -23,7 +23,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601 --verbosity 5 --http --http.addr 0.0.0.0 --http.api eth,net,web3 --http.corsdomain '*' --ws"
+            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601 --verbosity 5 --http --http.api eth,net,web3 --http.corsdomain '*' --ws"
           ports:
             - name: rpc
               containerPort: 8545
