@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: geth-miner
 spec:
-  replicas: 2
+  replicas: 3
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -23,7 +23,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --mine --networkid=2482601 --verbosity=5"
+            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --mine --networkid 2482601 --verbosity 5"
           ports:
             - name: discovery-udp
               containerPort: 30303
