@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: bootnode
   namespace: ethereum
+  labels:
+    app.kubernetes.io/name: bootnode
 spec:
   selector:
     app.kubernetes.io/name: bootnode
