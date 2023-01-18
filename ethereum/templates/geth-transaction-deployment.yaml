@@ -1,30 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: geth-miner
+  name: geth-transaction
   namespace: ethereum
   labels:
-    app.kubernetes.io/name: geth-miner
+    app.kubernetes.io/name: geth-transaction
 spec:
   replicas: 2
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: geth-miner
+      app.kubernetes.io/name: geth-transaction
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: geth-miner
+        app.kubernetes.io/name: geth-transaction
     spec:
       containers:
-        - name: geth-miner
+        - name: geth-tx
           image: ethereum/client-go:release-1.10
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --mine --networkid=2482601 --verbosity=5"
+            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --rpc --rpcapi=eth,net,web3 --rpccorsdomain='*' --ws --networkid=2482601 --verbosity=5"
           ports:
+            - name: rpc
+              containerPort: 8545
+            - name: ws
+              containerPort: 8546
             - name: discovery-udp
               containerPort: 30303
               protocol: UDP
@@ -38,29 +42,13 @@ spec:
           image: ethereum/client-go:release-1.10
           imagePullPolicy: IfNotPresent
           args:
-            - "init"
-            - "/var/geth/genesis.json"
+          - "init"
+          - "/var/geth/genesis.json"
           volumeMounts:
-            - name: data
-              mountPath: /root/.ethereum
-            - name: config
-              mountPath: /var/geth
-        - name: create-account
-          image: ethereum/client-go:release-1.10
-          imagePullPolicy: IfNotPresent
-          command: ["/bin/sh"]
-          args:
-            - "-c"
-            - "printf '$(PASSWORD)\n$(PASSWORD)\n' | geth account new"
-          env:
-            - name: PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: geth-miner
-                  key: password
-          volumeMounts:
-            - name: data
-              mountPath: /root/.ethereum
+          - name: data
+            mountPath: /root/.ethereum
+          - name: config
+            mountPath: /var/geth
         - name: get-bootnodes
           image: ethereum/client-go:release-1.10
           imagePullPolicy: IfNotPresent
@@ -85,9 +73,9 @@ spec:
               done;
               echo "WARNING. unable to find bootnodes. continuing but geth may not be able to find any peers.";
               exit 0;
-          env: 
-            - name: BOOTNODE_REGISTRAR_SVC 
-              value: bootnode-registrar 
+              env: 
+                - name: BOOTNODE_REGISTRAR_SVC 
+                  value: eth-bootnode-registrar
           volumeMounts: 
             - name: data 
               mountPath: /geth 

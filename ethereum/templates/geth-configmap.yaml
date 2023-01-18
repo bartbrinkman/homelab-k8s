@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: geth-miner
+  name: geth
   namespace: ethereum
   labels:
-    app.kubernetes.io/name: geth-miner
+    app.kubernetes.io/name: geth
 data:
   genesis.json: |
     {{- range .Files.Lines "genesis.json" }}
