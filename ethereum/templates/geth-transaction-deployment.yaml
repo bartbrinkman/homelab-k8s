@@ -23,7 +23,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601 --verbosity 5"
+            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601"
             - "--http --http.api eth,net,web3 --http.corsdomain '*' --ws"
             - "--nat=extip:$(POD_IP)"
           ports:
