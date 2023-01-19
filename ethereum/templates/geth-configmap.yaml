@@ -9,7 +9,7 @@ data:
   genesis.json: |-
     {
       "config": {
-        "chainId": {{ .Values.chainId }},
+        "chainId": {{ int .Values.chainId }},
         "homesteadBlock": 0,
         "eip150Block": 0,
         "eip155Block": 0,
