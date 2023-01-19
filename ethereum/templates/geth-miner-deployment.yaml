@@ -36,6 +36,9 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /root/.ethereum
+          resources:
+            limits:
+              cpu: "0.1"
       initContainers:
         - name: init-genesis
           image: ethereum/client-go:release-1.10
