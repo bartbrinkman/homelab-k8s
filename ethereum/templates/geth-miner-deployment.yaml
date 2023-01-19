@@ -38,8 +38,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /root/.ethereum
-            - name: config
-              mountPath: /var/geth
           resources:
             limits:
               cpu: "0.1"
