@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: geth
 data:
-  genesis.json: |-
+  genesis.json: |
     {
       "config": {
         "chainId": {{ int .Values.chainId }},
