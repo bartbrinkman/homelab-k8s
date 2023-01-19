@@ -23,9 +23,8 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601"
+            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid {{ .Values.chainId }}"
             - "--http --http.api eth,net,web3 --http.corsdomain '*' --ws"
-            - "--nat=extip:$(POD_IP)"
           ports:
             - name: rpc
               containerPort: 8545
@@ -39,11 +38,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /root/.ethereum
-          env:
-            - name: POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
       initContainers:
         - name: init-genesis
           image: ethereum/client-go:release-1.10

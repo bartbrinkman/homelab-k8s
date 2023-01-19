@@ -23,8 +23,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601"
-            - "--nat=extip:$(POD_IP)"
+            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid {{ .Values.chainId }}"
             - "--mine"
           ports:
             - name: discovery-udp
@@ -35,11 +34,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /root/.ethereum
-          env:
-            - name: POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
       initContainers:
         - name: init-genesis
           image: ethereum/client-go:release-1.10
