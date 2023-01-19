@@ -180,7 +180,7 @@ metadata:
   namespace: ethereum
   name: sirato-proxy
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 80
     targetPort: 80
