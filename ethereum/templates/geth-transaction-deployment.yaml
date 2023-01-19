@@ -23,7 +23,9 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid {{ .Values.chainId }}"
+            - "geth 
+            - "--bootnodes=`cat /root/.ethereum/bootnodes`"
+            - "--networkid {{ int .Values.chainId }}"
             - "--http --http.api eth,net,web3 --http.corsdomain '*' --ws"
           ports:
             - name: rpc
