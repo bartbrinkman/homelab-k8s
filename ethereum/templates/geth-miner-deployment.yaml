@@ -39,6 +39,8 @@ spec:
           resources:
             limits:
               cpu: "0.1"
+            requests:
+              cpu: "0"
       initContainers:
         - name: init-genesis
           image: ethereum/client-go:release-1.10
