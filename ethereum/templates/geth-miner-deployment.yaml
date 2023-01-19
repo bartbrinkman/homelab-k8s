@@ -18,14 +18,14 @@ spec:
     spec:
       containers:
         - name: geth
-          image: ethereum/client-go:release-1.8
+          image: ethereum/client-go:release-1.10
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601 --mine"
-            - "--etherbase=0"
+            - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --networkid 2482601"
             - "--nat=extip:$(POD_IP)"
+            - "--mine"
           ports:
             - name: discovery-udp
               containerPort: 30303
@@ -42,7 +42,7 @@ spec:
                   fieldPath: status.podIP
       initContainers:
         - name: init-genesis
-          image: ethereum/client-go:release-1.8
+          image: ethereum/client-go:release-1.10
           imagePullPolicy: IfNotPresent
           args:
             - "init"
@@ -53,7 +53,7 @@ spec:
             - name: config
               mountPath: /var/geth
         - name: create-account
-          image: ethereum/client-go:release-1.8
+          image: ethereum/client-go:release-1.10
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:
@@ -69,7 +69,7 @@ spec:
             - name: data
               mountPath: /root/.ethereum
         - name: get-bootnodes
-          image: ethereum/client-go:release-1.8
+          image: ethereum/client-go:release-1.10
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
           args:
