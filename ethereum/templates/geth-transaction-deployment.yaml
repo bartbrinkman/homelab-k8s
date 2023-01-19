@@ -25,9 +25,9 @@ spec:
             - "-c"
             - "geth" 
             - "--bootnodes=`cat /root/.ethereum/bootnodes`"
-            - "--nat extip:$(POD_IP)" 
-            - "--networkid {{ int .Values.chainId }}"
-            - "--http --http.api eth,net,web3 --http.corsdomain '*' --ws"
+            - "--nat=extip:$(POD_IP)" 
+            - "--networkid={{ int .Values.chainId }}"
+            - "--http --http.api=eth,net,web3 --http.corsdomain='*' --ws"
           ports:
             - name: rpc
               containerPort: 8545

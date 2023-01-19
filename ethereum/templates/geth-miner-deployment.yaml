@@ -25,8 +25,8 @@ spec:
             - "-c"
             - "geth"
             - "--bootnodes=`cat /root/.ethereum/bootnodes`"
-            - "--nat extip:$(POD_IP)" 
-            - "--networkid {{ int .Values.chainId }}"
+            - "--nat=extip:$(POD_IP)" 
+            - "--networkid={{ int .Values.chainId }}"
             - "--mine"
           ports:
             - name: discovery-udp
