@@ -35,7 +35,7 @@ spec:
               mountPath: /root/.ethereum
           resources:
             limits:
-              cpu: "0.1"
+              cpu: "0.3"
             requests:
               cpu: "0"
           env:
