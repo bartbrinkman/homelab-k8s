@@ -69,7 +69,7 @@ spec:
             - name: MONGO_DB_NAME
               value: epirus
             - name: NODE_ENDPOINT
-              value: {{NODE_ENDPOINT}}
+              value: http://geth-transaction:8545
           image: web3labs/epirus-free-ingestion:latest
           name: ingestion
           resources: {}
