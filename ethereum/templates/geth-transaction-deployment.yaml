@@ -25,6 +25,7 @@ spec:
             - "-c"
             - "geth" 
             - "--bootnodes=`cat /root/.ethereum/bootnodes`"
+            - "--verbosity={{ int .Values.verbosity }}"
             - "--nat=extip:$(POD_IP)" 
             - "--networkid={{ int .Values.chainId }}"
             - "--http --http.api=eth,net,web3 --http.corsdomain='*' --ws"
