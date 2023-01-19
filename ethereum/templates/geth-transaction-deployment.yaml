@@ -25,6 +25,7 @@ spec:
             - "-c"
             - "geth" 
             - "--bootnodes=`cat /root/.ethereum/bootnodes`"
+            - "--nat extip:$(POD_IP)" 
             - "--networkid {{ int .Values.chainId }}"
             - "--http --http.api eth,net,web3 --http.corsdomain '*' --ws"
           ports:
@@ -40,6 +41,11 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /root/.ethereum
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
       initContainers:
         - name: init-genesis
           image: ethereum/client-go:release-1.10
