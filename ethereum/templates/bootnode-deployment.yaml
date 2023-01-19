@@ -23,8 +23,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "bootnode --nodekey=/etc/bootnode/node.key"
-            - "--verbosity={{ int .Values.verbosity }}"
+            - "bootnode --nodekey /etc/bootnode/node.key --verbosity {{ int .Values.verbosity }}"
           volumeMounts:
             - name: data
               mountPath: /etc/bootnode
