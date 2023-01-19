@@ -1,0 +1,231 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sirato-api-deployment
+  namespace: ethereum
+spec:
+  selector:
+    matchLabels:
+      run: sirato-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: sirato-api
+    spec:
+      containers:
+      - name: sirato-api
+        image: web3labs/epirus-free-api:latest
+        ports:
+        - containerPort: 8090
+        env:
+        - name: MONGO_CLIENT_URI
+          value: mongodb://sirato-db:27017
+        - name: MONGO_DB_NAME
+          value: "epirus"
+        - name: MONGO_CREATE_INDICES
+          value: "true"
+        - name: NODE_ENDPOINT
+          value: http://geth-transaction:8545
+        - name: REINDEX_ENDPOINT
+          value: http://sirato-ingestion/reindex
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sirato-api
+  labels:
+    run: sirato-api
+  namespace: ethereum
+spec:
+  ports:
+  - port: 8090
+    protocol: TCP
+  selector:
+    run: sirato-api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: sirato-ingestion
+  name: sirato-ingestion
+  namespace: ethereum
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: sirato-ingestion
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: sirato-ingestion
+    spec:
+      containers:
+        - env:
+            - name: MONGO_CLIENT_URI
+              value: mongodb://sirato-db:27017
+            - name: MONGO_DB_NAME
+              value: epirus
+            - name: NODE_ENDPOINT
+              value: {{NODE_ENDPOINT}}
+          image: web3labs/epirus-free-ingestion:latest
+          name: ingestion
+          resources: {}
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sirato-db-deployment
+  namespace: ethereum
+spec:
+  selector:
+    matchLabels:
+      run: sirato-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: sirato-db
+    spec:
+      containers:
+      - name: sirato-db
+        image: mongo:5.0.8
+        ports:
+        - containerPort: 27017
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sirato-db
+  namespace: ethereum
+  labels:
+    run: sirato-db
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+  selector:
+    run: sirato-db
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sirato-nginx-conf
+  namespace: ethereum
+data:
+  nginx.conf: |
+    user nginx;
+    error_log  /var/log/nginx/error.log;
+    events {
+    }
+    http {
+      access_log	/var/log/nginx/access.log;
+      server {
+          listen       80;
+          server_name  _;
+          location /api/ {
+            proxy_pass http://sirato-api:8090/;
+          }
+          location / {
+            proxy_pass http://sirato-web:3000/;
+          }
+      }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ethereum
+  labels:
+    run: sirato-proxy
+  name: sirato-proxy-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: sirato-proxy
+  template:
+    metadata:
+      labels:
+        run: sirato-proxy
+    spec:
+      containers:
+      - name: sirato-proxy
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /etc/nginx # mount nginx-conf volumn to /etc/nginx
+          readOnly: true
+          name: sirato-nginx-conf
+        - mountPath: /var/log/nginx
+          name: log
+      volumes:
+      - name: sirato-nginx-conf
+        configMap:
+          name: sirato-nginx-conf # place ConfigMap `nginx-conf` on /etc/nginx
+          items:
+            - key: nginx.conf
+              path: nginx.conf
+      - name: log
+        emptyDir: {}
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ethereum
+  name: sirato-proxy
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    run: sirato-proxy
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ethereum
+  labels:
+    run: sirato-web
+  name: sirato-web-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: sirato-web
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: sirato-web
+    spec:
+      containers:
+        - name: sirato-web
+          env:
+            - name: API_URL
+              value: /api
+          image: web3labs/epirus-free-web:latest
+          ports:
+            - containerPort: 3000
+          resources: {}
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sirato-web
+  namespace: ethereum
+  labels:
+    run: sirato-web
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+  selector:
+    run: sirato-web
