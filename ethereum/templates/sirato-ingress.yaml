@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: sirato
+  
+  namespace: ethereum
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: sirato.homelab.bartbrinkman.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: sirato-proxy
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - sirato.homelab.bartbrinkman.nl
+      secretName: sirato-tls
