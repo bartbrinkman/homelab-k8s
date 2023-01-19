@@ -6,6 +6,17 @@ metadata:
   labels:
     app.kubernetes.io/name: geth
 data:
-  genesis.json: |
-    {{- range .Files.Lines "genesis.json" }}
-    {{ . }}{{ end }}
+  genesis.json: |-
+    {
+      "config": {
+        "chainId": {{ .Values.chainId }},
+        "homesteadBlock": 0,
+        "eip150Block": 0,
+        "eip155Block": 0,
+        "eip158Block": 0
+      },
+      "difficulty": "0x400",
+      "gasLimit": "2000000",
+      "nonce": "0x0000000000000000",
+      "alloc": {}
+    }
