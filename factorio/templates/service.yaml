@@ -4,7 +4,7 @@ metadata:
   name: factorio
   namespace: factorio
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - name: rcon
       port: 27015
