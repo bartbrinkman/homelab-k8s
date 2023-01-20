@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     app.kubernetes.io/name: geth-transaction
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - name: rpc
     port: 8545
