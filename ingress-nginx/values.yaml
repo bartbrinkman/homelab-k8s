@@ -52,3 +52,6 @@ ingress-nginx:
     extraVolumeMounts:
     - name: custom-error-pages
       mountPath: /www
+
+  tcp:
+    8545: "ethereum/geth-transaction:8545"
