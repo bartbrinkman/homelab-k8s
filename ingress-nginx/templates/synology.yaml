@@ -12,15 +12,21 @@ kind: Ingress
 metadata:
   name: synology
   namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   rules:
-  - host: synology.homelab.bartbrinkman.nl
-    http:
-      paths:
-      - backend:
-          service:
-            name: synology
-            port:
-              number: 5000
-        path: /
-        pathType: ImplementationSpecific
+    - host: synology.homelab.bartbrinkman.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: synology
+                port:
+                  number: 5000
+            path: /
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - synology.homelab.bartbrinkman.nl
+      secretName: synology-tls
