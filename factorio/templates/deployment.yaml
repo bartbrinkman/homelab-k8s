@@ -36,7 +36,7 @@ spec:
               mountPath: /factorio
       containers:
         - image: 'factoriotools/factorio:stable'
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           name: factorio
           ports:
             - containerPort: 27015
