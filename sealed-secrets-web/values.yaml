@@ -11,4 +11,4 @@ sealed-secrets-web:
     tls:
       - secretName: sealed-secrets-web-tls
         hosts:
-          - hsealed-secrets-web.homelab.bartbrinkman.nl
+          - sealed-secrets-web.homelab.bartbrinkman.nl
