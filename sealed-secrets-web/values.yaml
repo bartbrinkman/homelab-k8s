@@ -5,6 +5,8 @@ sealed-secrets-web:
       cert-manager.io/cluster-issuer: letsencrypt
     hosts:
       - host: sealed-secrets-web.homelab.bartbrinkman.nl
+        paths:
+          - path: /
     tls:
       - secretName: sealed-secrets-web-tls
         hosts:
