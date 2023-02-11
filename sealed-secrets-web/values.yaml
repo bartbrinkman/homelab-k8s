@@ -7,6 +7,7 @@ sealed-secrets-web:
       - host: sealed-secrets-web.homelab.bartbrinkman.nl
         paths:
           - path: /
+            pathType: Prefix
     tls:
       - secretName: sealed-secrets-web-tls
         hosts:
