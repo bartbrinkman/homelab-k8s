@@ -54,7 +54,9 @@ ingress:
        - code-server.homelab.bartbrinkman.nl
 
 # Optional additional arguments
-extraArgs: []
+extraArgs: 
+  - --auth
+  - none
   # These are the arguments normally passed to code-server; run
   # code-server --help for a list of available options.
   #
