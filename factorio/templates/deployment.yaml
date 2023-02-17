@@ -19,7 +19,15 @@ spec:
         app.kubernetes.io/name: factorio
     spec:
       automountServiceAccountToken: true
-      hostNetwork: true
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                     - hephaestus
       initContainers:
         - name: copy-server-config
           image: busybox
@@ -43,6 +51,7 @@ spec:
               name: rcon
               protocol: TCP
             - containerPort: 34197
+              hostPort: 34197
               name: server
               protocol: UDP
           volumeMounts:
