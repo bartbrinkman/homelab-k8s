@@ -6,10 +6,6 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - name: rcon
-      port: 27015
-      targetPort: 27015
-      protocol: TCP
     - name: server
       port: 34197
       targetPort: 34197

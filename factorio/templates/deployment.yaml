@@ -46,9 +46,6 @@ spec:
           imagePullPolicy: Always
           name: factorio
           ports:
-            - containerPort: 27015
-              name: rcon
-              protocol: TCP
             - containerPort: 34197
               name: server
               protocol: UDP
