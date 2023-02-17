@@ -8,6 +8,7 @@ spec:
   ports:
     - name: server
       port: 34197
+      nodePort: 34197
       protocol: UDP
   selector:
     app.kubernetes.io/instance: factorio
