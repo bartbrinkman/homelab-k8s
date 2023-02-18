@@ -103,6 +103,7 @@ metadata:
   name: mysql
   labels:
     name: mysql
+    istio-injection: enabled
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
 ---
