@@ -6,3 +6,5 @@ metadata:
 spec:
   auth:
     strategy: anonymous
+  deployment:
+    accessible_namespaces: ["**"]
