@@ -94,6 +94,7 @@ metadata:
   name: snipe-it
   labels:
     name: snipe-it
+    istio-injection: enabled
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
 ---

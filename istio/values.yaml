@@ -1,3 +1,6 @@
+istiod:
+  meshConfig:
+    enablePrometheusMerge: 'true'
 kiali-operator:
   cr.create: 'true'
   cr.namespace: istio-system
