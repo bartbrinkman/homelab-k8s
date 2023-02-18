@@ -30,5 +30,5 @@ dependencies:
   version: 1.16.1
   repository: https://istio-release.storage.googleapis.com/charts
 - name: kiali-operator
-  version: 1.30.0
+  version: 1.63.2
   repository: https://kiali.org/helm-charts
