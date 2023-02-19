@@ -4,6 +4,7 @@ metadata:
   name: monitoring
   labels:
     name: monitoring
+    istio-injection: enabled
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
 ---

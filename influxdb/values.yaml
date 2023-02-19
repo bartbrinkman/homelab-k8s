@@ -1,6 +1,6 @@
 influxdb2:
-  setDefaultUser:
-    enabled: true
+  adminUser:
+    existingSecret: influxdb-auth
   ingress: 
     enabled: true
     tls: true
