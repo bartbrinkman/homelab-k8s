@@ -3,6 +3,11 @@ ingress-nginx:
     dnsPolicy: ClusterFirstWithHostNet
     hostNetwork: true
     kind: "DaemonSet"
+    annotations:
+      sidecar.istio.io/inject: 'true'
+      traffic.sidecar.istio.io/includeInboundPorts: ""
+      traffic.sidecar.istio.io/excludeInboundPorts: "80,443"
+      traffic.sidecar.istio.io/excludeOutboundIPRanges: "10.96.0.1/24"
 
     watchIngressWithoutClass: true
 
