@@ -25,4 +25,4 @@ appVersion: "1.0"
 dependencies:
 - name: metrics-server
   version: 0.6.2
-  repository: k8s.gcr.io/metrics-server/metrics-server
+  repository: https://k8s.gcr.io/metrics-server/metrics-server
