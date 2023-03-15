@@ -1,3 +1,4 @@
 metrics-server:
   defaultArgs:
+    - '--cert-dir=/tmp'
     - '--kubelet-insecure-tls'
