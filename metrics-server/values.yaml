@@ -1,4 +1,3 @@
 metrics-server:
   defaultArgs:
-    - --kubelet-preferred-address-types=Hostname,InternalIP,ExternalIP
-    - --kubelet-insecure-tls
+    - '--kubelet-insecure-tls'
