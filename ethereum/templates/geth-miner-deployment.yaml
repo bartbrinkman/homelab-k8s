@@ -23,7 +23,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "geth --bootnodes `cat /root/.ethereum/bootnodes` --networkid {{ int .Values.chainId }} --nat extip:$(POD_IP) --verbosity {{ int .Values.verbosity }} --mine"
+            - "geth --bootnodes `cat /root/.ethereum/bootnodes` --networkid {{ int .Values.chainId }} --nat extip:$(POD_IP) --verbosity {{ int .Values.verbosity }} --mine --ignore-legacy-receipts"
           ports:
             - name: discovery-udp
               containerPort: 30303
