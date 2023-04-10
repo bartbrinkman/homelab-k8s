@@ -1,0 +1,12 @@
+postgres:
+  global:
+    postgresql:
+      auth:
+        username: postgres
+        existingSecret: postgres
+  primary:
+    initdb:
+      scripts:
+        peppermint.sql: | 
+          CREATE DATABASE peppermint;
+          GRANT ALL PRIVILEGES ON DATABASE peppermint TO postgres;

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: snippet-box
-  namespace: snippet-box
+  namespace: inventory
 spec:
   replicas: 1
   revisionHistoryLimit: 3

@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-url: https://oauth2-proxy.homelab.bartbrinkman.nl/oauth2/auth
     nginx.ingress.kubernetes.io/custom-http-errors: "503"
   name: snippet-box
-  namespace: snippet-box
+  namespace: inventory
 spec:
   ingressClassName: nginx
   rules:
