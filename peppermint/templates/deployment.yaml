@@ -29,8 +29,8 @@ spec:
                 secretKeyRef:
                   name: peppermint
                   key: password
-            - name: POSTGRES_DB
-              value: peppermint
+            - name: DB_HOST
+              value: postgres-postgresql.postgres.svc.cluster.local
           ports:
             - containerPort: 5001
               name: http
