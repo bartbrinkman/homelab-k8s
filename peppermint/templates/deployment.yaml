@@ -21,14 +21,14 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: PORT
-              value: 5001
+              value: '5001'
             - name: DB_USERNAME
               value: postgres
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: password
                   name: postgres
+                  key: password
             - name: POSTGRES_DB
               value: peppermint
           ports:
