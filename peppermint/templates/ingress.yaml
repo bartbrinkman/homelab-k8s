@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/custom-http-errors: "503"
+  name: peppermint
+  namespace: inventory
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: peppermint.homelab.bartbrinkman.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: peppermint
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - peppermint.homelab.bartbrinkman.nl
+      secretName: peppermint-tls

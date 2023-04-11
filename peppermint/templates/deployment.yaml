@@ -31,6 +31,8 @@ spec:
                   key: password
             - name: DB_HOST
               value: postgres-postgresql.postgres.svc.cluster.local
+            - name: BASE_URL
+              value: https://peppermint.homelab.bartbrinkman.nl
           ports:
             - containerPort: 5001
               name: http
