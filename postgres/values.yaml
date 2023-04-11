@@ -4,6 +4,10 @@ postgresql:
       auth:
         username: postgres
         existingSecret: postgres
+        secretKeys:
+          adminPasswordKey: "adminPasswordKey"
+          userPasswordKey: "userPasswordKey"
+          replicationPasswordKey: "replicationPasswordKey"
   primary:
     initdb:
       scripts:
