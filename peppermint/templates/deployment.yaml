@@ -27,8 +27,8 @@ spec:
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: postgres
-                  name: password
+                  key: password
+                  name: postgres
             - name: POSTGRES_DB
               value: peppermint
           ports:
