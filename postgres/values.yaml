@@ -1,4 +1,4 @@
-postgres:
+postgresql:
   global:
     postgresql:
       auth:
@@ -7,6 +7,6 @@ postgres:
   primary:
     initdb:
       scripts:
-        peppermint.sql: | 
+        peppermint.sql: |
           CREATE DATABASE peppermint;
           GRANT ALL PRIVILEGES ON DATABASE peppermint TO postgres;
