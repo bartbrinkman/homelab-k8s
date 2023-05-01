@@ -11,10 +11,13 @@ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Doc
 
 This cluster is based on Argo CD's app-of-apps pattern, which can be set up using the Quick Start in the [documentation](https://argo-cd.readthedocs.io/en/stable/).
 
-
 ## kube-prometheus-stack
 
 - The CRD's are too large and must be applied manually. They are skipped by ArgoCD while syncing (`skipCrds: true`).
+
+# using DirectPV
+
+- the app-of-apps app for MinIO also sets up DirectPV, but will require additional [installation instructions](https://github.com/minio/directpv/blob/master/docs/installation.md) that might not be useful with GitOps.
 
 ## Use all nodes
 
