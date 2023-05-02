@@ -10,3 +10,15 @@ minio:
 
   persistence:
     storageClass: directpv-min-io
+
+  consoleIngress:
+    annotations: 
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt
+    path: /
+    hosts:
+      - minio-console.homelab.bartbrinkman.nl
+    tls: 
+      - secretName: minio-console-tls
+        hosts:
+          - minio-console.homelab.bartbrinkman.nl
