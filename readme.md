@@ -17,7 +17,7 @@ This cluster is based on Argo CD's app-of-apps pattern, which can be set up usin
 
 # using DirectPV
 
-- the app-of-apps app for MinIO also sets up DirectPV, but will require additional [installation instructions](https://github.com/minio/directpv/blob/master/docs/installation.md) that might not be useful with GitOps.
+- the app-of-apps app for MinIO also sets up DirectPV, but will require additional [installation instructions](https://github.com/minio/directpv/blob/master/docs/installation.md) that might not be useful with GitOps, such as discovering drives on nodes.
 
 ## Use all nodes
 
