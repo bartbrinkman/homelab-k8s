@@ -1,4 +1,6 @@
 minio:
+  existingSecret: minio
+
   replicas: 2
 
   resources:
