@@ -5,10 +5,10 @@ minio:
 
   buckets:
     - name: registry
-      policy: readonly
+      policy: download
       purge: false
     - name: public
-      policy: readonly
+      policy: download
       purge: false
 
   resources:
