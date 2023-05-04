@@ -3,24 +3,43 @@ minio:
 
   replicas: 2
 
+  buckets:
+    - name: registry
+      policy: readonly
+      purge: false
+    - name: public
+      policy: readonly
+      purge: false
+
   resources:
     requests:
       memory: 512Mi
 
   ingress:
-    enabled: false
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt
+    path: /
+    hosts:
+      - minio.homelab.bartbrinkman.nl
+    tls:
+      - secretName: minio-tls
+        hosts:
+          - minio.homelab.bartbrinkman.nl
 
   persistence:
     storageClass: directpv-min-io
 
   consoleIngress:
-    annotations: 
+    enabled: true
+    annotations:
       kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: letsencrypt
     path: /
     hosts:
       - minio-console.homelab.bartbrinkman.nl
-    tls: 
+    tls:
       - secretName: minio-console-tls
         hosts:
           - minio-console.homelab.bartbrinkman.nl
