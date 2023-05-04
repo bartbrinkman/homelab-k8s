@@ -30,6 +30,7 @@ minio:
 
   environment:
     HOSTNAME: https://minio.homelab.bartbrinkman.nl
+    MINIO_SERVER_URL: https://minio.homelab.bartbrinkman.nl
 
   persistence:
     storageClass: directpv-min-io
