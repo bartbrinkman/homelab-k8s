@@ -15,9 +15,7 @@ spec:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
   ignoreDifferences:
-    - group: '*'
-      kind: DaemonSet
-      namespace: minio
+    - kind: DaemonSet
       jsonPointers:
         - /status
 
