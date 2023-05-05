@@ -1,6 +1,6 @@
 argo-workflows:
   server:
-    extraArgs:
+    # extraArgs:
       # - '--auth-mode=sso'
       # - '--auth-mode=server'
 
