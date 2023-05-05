@@ -12,8 +12,8 @@ argo-workflows:
         name: argo-server-sso
         key: client-secret
       redirectUrl: https://workflows.homelab.bartbrinkman.nl/oauth2/callback
-      # rbac:
-      #   enabled: true
+      rbac:
+        enabled: false
       # scopes:
       #   - groups
  
