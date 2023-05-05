@@ -15,8 +15,7 @@ spec:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
   ignoreDifferences:
-    - kind: DaemonSet
-      jsonPointers:
+    - jsonPointers:
         - /status/currentNumberScheduled
         - /status/desiredNumberScheduled
         - /status/numberReady
