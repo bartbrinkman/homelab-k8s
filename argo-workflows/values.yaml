@@ -1,5 +1,8 @@
 argo-workflows:
-  controller:
+  server:
+    extraArgs:
+      - '--auth-mode=sso'
+
     sso: 
       issuer: https://token.actions.githubusercontent.com
       clientId:
@@ -13,9 +16,7 @@ argo-workflows:
         enabled: true
       scopes:
         - groups
-  server:
-    extraArgs:
-      - '--auth-mode=sso' 
+ 
     ingress:
       enabled: true
       annotations: 
