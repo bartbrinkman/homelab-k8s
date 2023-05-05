@@ -16,6 +16,7 @@ argo-workflows:
   server:
     extraArgs:
       - '--auth-mode=sso' 
+      - '--secure=false'
     ingress:
       enabled: true
       annotations: 
