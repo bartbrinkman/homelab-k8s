@@ -1,7 +1,7 @@
 argo-workflows:
   controller:
     sso: 
-      issuer: GET https://github.com/login/oauth/authorize
+      issuer: https://github.com/login/oauth/authorize
       clientId:
         name: argo-server-sso
         key: client-id
