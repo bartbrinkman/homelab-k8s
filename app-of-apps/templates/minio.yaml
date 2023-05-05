@@ -14,4 +14,11 @@ spec:
     path: minio
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
+  ignoreDifferences:
+    - group: '*'
+      kind: DaemonSet
+      name: node-server
+      namespace: directpv
+      jqPathExpressions:
+        - .status
 
