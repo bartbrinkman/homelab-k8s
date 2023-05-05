@@ -4,7 +4,7 @@ argo-workflows:
       - '--auth-mode=sso'
 
     sso: 
-      issuer: https://token.actions.githubusercontent.com
+      issuer: https://github.com
       clientId:
         name: argo-server-sso
         key: client-id
