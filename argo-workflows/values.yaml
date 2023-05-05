@@ -1,8 +1,4 @@
 argo-workflows:
-  server:
-    extraArgs:
-      - '--auth-mode=server'
-
   controller:
     sso: 
       issuer: GET https://github.com/login/oauth/authorize
@@ -17,7 +13,9 @@ argo-workflows:
         enabled: true
       scopes:
         - groups
-
+  server:
+    extraArgs:
+      - '--auth-mode=sso' 
     ingress:
       enabled: true
       annotations: 
