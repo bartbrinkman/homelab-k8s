@@ -1,0 +1,33 @@
+argo-workflows:
+  server:
+    extraArgs:
+      - '--auth-mode=server'
+
+  controller:
+    sso: 
+      issuer: GET https://github.com/login/oauth/authorize
+      clientId:
+        name: argo-server-sso
+        key: client-id
+      clientSecret:
+        name: argo-server-sso
+        key: client-secret
+      redirectUrl: https://workflows.homelab.bartbrinkman.nl/oauth2/callback
+      rbac:
+        enabled: true
+      scopes:
+        - groups
+
+    ingress:
+      enabled: true
+      annotations: 
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts: 
+        - workflows.homelab.bartbrinkman.nl
+      paths:
+        - /
+      tls:
+        - secretName: argo-workflows-tls
+          hosts:
+            - workflows.homelab.bartbrinkman.nl
