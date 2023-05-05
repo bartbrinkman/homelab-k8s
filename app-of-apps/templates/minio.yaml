@@ -15,7 +15,8 @@ spec:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
   ignoreDifferences:
-    - kind: '*'
+    - kind: Daemonset
+      namespace: directpv
       jsonPointers:
         - /status/currentNumberScheduled
         - /status/desiredNumberScheduled
