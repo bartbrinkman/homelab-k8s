@@ -192,3 +192,12 @@ metadata:
     name: minio
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argo
+  labels:
+    name: argo
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
