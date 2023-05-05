@@ -17,5 +17,7 @@ spec:
   ignoreDifferences:
     - kind: DaemonSet
       jsonPointers:
-        - /status
+        - /status/currentNumberScheduled
+        - /status/desiredNumberScheduled
+        - /status/numberReady
 
