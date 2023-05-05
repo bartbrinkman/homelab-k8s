@@ -1,8 +1,9 @@
 argo-workflows:
   server:
-    # extraArgs:
-      # - '--auth-mode=sso'
+    extraArgs:
       - '--auth-mode=server'
+      # - '--auth-mode=sso'
+
 
     # sso: 
     #   issuer: https://token.actions.githubusercontent.com
