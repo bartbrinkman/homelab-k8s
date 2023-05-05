@@ -15,7 +15,8 @@ spec:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
   ignoreDifferences:
-    - jsonPointers:
+    - kind: '*'
+      jsonPointers:
         - /status/currentNumberScheduled
         - /status/desiredNumberScheduled
         - /status/numberReady
