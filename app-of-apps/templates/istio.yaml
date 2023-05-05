@@ -15,6 +15,9 @@ spec:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
   ignoreDifferences:
-  - kind: ValidatingWebhookConfiguration
-    jsonPointers:
-    - /webhooks/failurePolicy
+    - group: '*'
+      kind: ValidatingWebhookConfiguration
+      name: istiod-default-validator
+      jqPathExpressions:
+        - '.webhooks[] | select(.failurePolicy)'
+
