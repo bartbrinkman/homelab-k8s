@@ -14,11 +14,4 @@ spec:
     path: minio
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
-  ignoreDifferences:
-    - kind: Daemonset
-      namespace: directpv
-      jsonPointers:
-        - /status/currentNumberScheduled
-        - /status/desiredNumberScheduled
-        - /status/numberReady
 
