@@ -28,6 +28,6 @@ spec:
               repo: https://github.com/cocktailpeanut/dalai.git
               revision: "main"
       container:
-        image: docker
+        image: docker:dind
         command: [sh, -c]
         args: ["docker build ."]
