@@ -29,5 +29,7 @@ spec:
               revision: "main"
       container:
         image: docker:dind
+        securityContext:
+          privileged: true
         command: [sh, -c]
         args: ["docker build ."]
