@@ -16,10 +16,10 @@ spec:
   templates:
     - name: dalai
       steps:
-        - - name: clone
-            template: clone
+        - - name: build
+            template: build
 
-    - name: clone
+    - name: build
       inputs:
         artifacts:
           - name: dalai-source
