@@ -28,9 +28,6 @@ spec:
               repo: https://github.com/cocktailpeanut/dalai.git
               revision: "main"
       container:
-        image: debian
+        image: docker
         command: [sh, -c]
-        args: ["ls -l /src"]
-        volumeMounts:                     
-          - name: workdir
-            mountPath: /src
+        args: ["docker build ."]
