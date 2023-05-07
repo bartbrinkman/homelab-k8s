@@ -33,6 +33,7 @@ spec:
         env:
           - name: DOCKER_HOST
             value: tcp://localhost:2375
+        workingDir: /src
         command:
           - sh
         args:
