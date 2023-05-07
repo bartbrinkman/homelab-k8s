@@ -14,24 +14,23 @@ spec:
             storage: 1Gi
 
   templates:
-    templates:
-      - name: dalai
-        steps:
-          - name: clone
-            template: clone
+    - name: dalai
+      steps:
+        - name: clone
+          template: clone
 
-      - name: clone
-        inputs:
-          artifacts:
-            - name: dalai-source
-              path: /src
-              git:
-                repo: https://github.com/cocktailpeanut/dalai.git
-                revision: "main"
-        container:
-          image: debian
-          command: [sh, -c]
-          args: ["ls -l /src"]
-          volumeMounts:                     
-            - name: workdir
-              mountPath: /src
+    - name: clone
+      inputs:
+        artifacts:
+          - name: dalai-source
+            path: /src
+            git:
+              repo: https://github.com/cocktailpeanut/dalai.git
+              revision: "main"
+      container:
+        image: debian
+        command: [sh, -c]
+        args: ["ls -l /src"]
+        volumeMounts:                     
+          - name: workdir
+            mountPath: /src
