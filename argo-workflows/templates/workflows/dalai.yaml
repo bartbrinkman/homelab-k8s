@@ -28,8 +28,13 @@ spec:
               repo: https://github.com/cocktailpeanut/dalai.git
               revision: "main"
       container:
+        name: dind
         image: docker:dind
         securityContext:
           privileged: true
-        command: [sh, -c]
-        args: ["docker build ."]
+        command:
+          - sh
+        args:
+          - "-c"
+          - |
+            docker ps
