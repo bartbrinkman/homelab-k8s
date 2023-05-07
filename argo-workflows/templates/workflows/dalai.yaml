@@ -16,8 +16,8 @@ spec:
   templates:
     - name: dalai
       steps:
-        - name: clone
-          template: clone
+        - - name: clone
+            template: clone
 
     - name: clone
       inputs:
