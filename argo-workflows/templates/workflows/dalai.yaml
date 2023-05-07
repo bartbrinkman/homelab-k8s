@@ -17,6 +17,7 @@ spec:
       inputs:
         artifacts:
           - name: dalai-source
+            path: /src
             git:
               repo: git@github.com:cocktailpeanut/dalai.git
               revision: "main"
