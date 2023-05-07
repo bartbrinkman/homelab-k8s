@@ -3,7 +3,7 @@ kind: WorkflowTemplate
 metadata:
   name: dalai
 spec:
-  entrypoint: clone   
+  entrypoint: dalai   
   volumeClaimTemplates:   
     - metadata:
         name: workdir                     
@@ -12,19 +12,26 @@ spec:
         resources:
           requests:
             storage: 1Gi
+
   templates:
-    - name: clone
-      inputs:
-        artifacts:
-          - name: dalai-source
-            path: /src
-            git:
-              repo: git@github.com:cocktailpeanut/dalai.git
-              revision: "main"
-      container:
-        image: debian
-        command: [sh, -c]
-        args: ["ls -l /src"]
-        volumeMounts:                     
-          - name: workdir
-            mountPath: /src
+    templates:
+      - name: dalai
+        steps:
+          - name: clone
+            template: clone
+
+      - name: clone
+        inputs:
+          artifacts:
+            - name: dalai-source
+              path: /src
+              git:
+                repo: https://github.com/cocktailpeanut/dalai.git
+                revision: "main"
+        container:
+          image: debian
+          command: [sh, -c]
+          args: ["ls -l /src"]
+          volumeMounts:                     
+            - name: workdir
+              mountPath: /src
