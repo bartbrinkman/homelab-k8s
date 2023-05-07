@@ -38,7 +38,7 @@ spec:
         args:
           - "-c"
           - |
-            until docker ps; do sleep 3; done; docker build .
+            until docker ps; do sleep 3; done; ls -l && docker build .
       sidecars:
         - name: dind
           image: docker:dind
