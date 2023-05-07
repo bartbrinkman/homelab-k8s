@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  generateName: dalai-
+spec:
+  entrypoint: clone   
+  volumeClaimTemplates:   
+    - metadata:
+        name: workdir                     
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+  templates:
+    - name: clone
+      inputs:
+        artifacts:
+          - name: dalai-source
+            path: /src
+            git:
+              repo: git@github.com:cocktailpeanut/dalai.git
+              revision: "main"
+      container:
+        image: debian
+        command: [sh, -c]
+        args: ["ls -l /src"]
+        volumeMounts:                     
+          - name: workdir
+            mountPath: /src
