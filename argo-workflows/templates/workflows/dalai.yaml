@@ -28,13 +28,24 @@ spec:
               repo: https://github.com/cocktailpeanut/dalai.git
               revision: "main"
       container:
-        name: dind
-        image: docker:dind
-        securityContext:
-          privileged: true
+        name: build
+        image: docker
+        env:
+          - name: DOCKER_HOST
+            value: 127.0.0.1
         command:
           - sh
         args:
           - "-c"
           - |
-            docker ps
+            docker build .
+      sidecars:
+        - name: dind
+          image: docker:dind
+          command: [dockerd-entrypoint.sh]
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: ""
+          securityContext:
+            privileged: true
+          mirrorVolumeMounts: true
