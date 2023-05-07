@@ -32,13 +32,13 @@ spec:
         image: docker
         env:
           - name: DOCKER_HOST
-            value: 127.0.0.1
+            value: tcp://localhost:2375
         command:
           - sh
         args:
           - "-c"
           - |
-            docker build .
+            until docker ps; do sleep 3; done; docker build .
       sidecars:
         - name: dind
           image: docker:dind
