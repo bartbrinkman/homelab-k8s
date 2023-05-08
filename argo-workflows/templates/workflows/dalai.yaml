@@ -4,14 +4,14 @@ metadata:
   name: dalai
 spec:
   entrypoint: dalai   
-  volumeClaimTemplates:   
-    - metadata:
-        name: workdir                     
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        resources:
-          requests:
-            storage: 1Gi
+  # volumeClaimTemplates:   
+  #   - metadata:
+  #       name: workdir                     
+  #     spec:
+  #       accessModes: [ "ReadWriteOnce" ]
+  #       resources:
+  #         requests:
+  #           storage: 10Gi
 
   templates:
     - name: dalai
@@ -39,11 +39,10 @@ spec:
         args:
           - "-c"
           - |
-            until docker ps; do sleep 3; done; ls -l && docker build .
+            until docker ps; do sleep 3; done; ls -l && docker build . -t dalai:latest -t dalai:
       sidecars:
         - name: dind
           image: docker:dind
-          # command: [dockerd-entrypoint.sh]#
           command: ["dockerd", "--host", "tcp://127.0.0.1:2375"]
           args:
             - "--mtu=1450"

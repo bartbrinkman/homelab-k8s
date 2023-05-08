@@ -26,3 +26,6 @@ dependencies:
   - name: minio
     version: 5.0.8
     repository: https://charts.min.io/
+  - name: docker-registry
+    version: 2.2.2
+    repository: https://helm.twun.io

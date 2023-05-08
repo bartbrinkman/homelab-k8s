@@ -47,3 +47,30 @@ minio:
       - secretName: minio-console-tls
         hosts:
           - minio-console.homelab.bartbrinkman.nl
+
+docker-registry:
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt
+    path: /
+    hosts:
+      - docker-registry.homelab.bartbrinkman.nl
+    tls:
+      - secretName: docker-registry-tls
+        hosts:
+          - docker-registry.homelab.bartbrinkman.nl
+  storage: s3
+  secrets:
+    s3:
+      secretRef: "minio"
+      accessKey: "rootUser"
+      secretKey: "rootPassword"
+  s3:
+    region: us-east-1
+    regionEndpoint: minio.homelab.bartbrinkman.nl
+    bucket: registry
+    rootdirectory: /
+    encrypt: false
+    secure: true
