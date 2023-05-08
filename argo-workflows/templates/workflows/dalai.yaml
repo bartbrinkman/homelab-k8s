@@ -54,7 +54,11 @@ spec:
           initContainers:
             - name: dns
               image: busybox:1.28
-              command: ['sh', '-c', 'echo {"dns": ["1.1.1.1", "8.8.8.8"]} > /etc/docker/daemon.json']
+              command: 
+                - 'sh'
+                - '-c' 
+                - |
+                  echo {"dns": ["1.1.1.1", "8.8.8.8"]} > /etc/docker/daemon.json
               mirrorVolumeMounts: true
         
             
