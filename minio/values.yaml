@@ -51,6 +51,7 @@ minio:
 docker-registry:
   ingress:
     enabled: true
+    className: nil
     annotations:
       kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: letsencrypt
