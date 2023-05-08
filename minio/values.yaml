@@ -65,7 +65,7 @@ docker-registry:
     s3:
       secretRef: "minio"
   s3:
-    region: us-east-1
+    region: homelab
     regionEndpoint: https://minio.homelab.bartbrinkman.nl
     bucket: registry
     rootdirectory: /
