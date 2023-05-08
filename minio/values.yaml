@@ -64,8 +64,6 @@ docker-registry:
   secrets:
     s3:
       secretRef: "minio"
-      accessKey: "rootUser"
-      secretKey: "rootPassword"
   s3:
     region: us-east-1
     regionEndpoint: minio.homelab.bartbrinkman.nl
