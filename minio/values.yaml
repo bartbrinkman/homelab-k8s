@@ -71,3 +71,9 @@ docker-registry:
     rootdirectory: /
     encrypt: false
     secure: false
+  configData:
+    middleware:
+      storage:
+        - name: redirect
+          options:
+            baseurl: https://minio.homelab.bartbrinkman.nl/
