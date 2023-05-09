@@ -63,7 +63,7 @@ docker-registry:
   storage: s3
   secrets:
     # htpasswd: qanRJgS3gXEHHqfOBlmF:$2y$10$YMDI2qmixg69An.k8eiSzegg/pTEx/6yqcEZFHuQxCw4Aj160.OOy
-    htpasswd: foo
+    htpasswd: foo-bar-baz
     s3:
       secretRef: "minio"
   s3:
@@ -73,17 +73,14 @@ docker-registry:
     rootdirectory: /
     encrypt: false
     secure: false
-
   extraVolumeMounts:
-    - mountPath: /auth
-      name: registry
+    - mountPath: "/auth"
+      name: my-htpasswd
       readOnly: true
-
-  extraVolumes: 
-    - name: htpasswd
+  extraVolumes:
+    - name: my-htpasswd
       secret:
         secretName: registry
-        items:
-          - key: htpasswd
-            path: htpasswd
-            mode: 511
+  
+
+    
