@@ -66,8 +66,8 @@ docker-registry:
       secretRef: "minio"
   s3:
     region: homelab
-    regionEndpoint: minio
-    bucket: http://registry
+    regionEndpoint: http://minio:9000
+    bucket: registry
     rootdirectory: /
     encrypt: false
     secure: false
