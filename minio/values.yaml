@@ -49,6 +49,10 @@ minio:
           - minio-console.homelab.bartbrinkman.nl
 
 docker-registry:
+  image:
+    repository: registry
+    tag: 2.5.1
+
   ingress:
     enabled: true
     annotations:
