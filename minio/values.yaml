@@ -76,4 +76,4 @@ docker-registry:
       storage:
         - name: redirect
           options:
-            baseurl: https://minio.homelab.bartbrinkman.nl/
+            baseurl: https://minio.homelab.bartbrinkman.nl/registry/
