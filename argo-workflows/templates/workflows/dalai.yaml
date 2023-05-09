@@ -40,9 +40,9 @@ spec:
         args:
           - "-c"
           - |
-            until docker ps; do sleep 3; done; \
-            docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD docker-registry.homelab.bartbrinkman.n && \
-            docker build . -t docker-registry.homelab.bartbrinkman.nl/dalai:latest && \
+            until docker ps; do sleep 3; done; 
+            docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD docker-registry.homelab.bartbrinkman.n && 
+            docker build . -t docker-registry.homelab.bartbrinkman.nl/dalai:latest && 
             docker push docker-registry.homelab.bartbrinkman.nl/dalai:latest
       sidecars:
         - name: dind
