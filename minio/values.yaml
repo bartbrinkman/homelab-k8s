@@ -82,7 +82,7 @@ docker-registry:
         secretName: registry
         items:
           - key: htpasswd
-            path: /auth/htpasswd
+            path: htpasswd
             mode: 511
 
   # configData:
