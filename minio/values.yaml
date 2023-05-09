@@ -49,10 +49,6 @@ minio:
           - minio-console.homelab.bartbrinkman.nl
 
 docker-registry:
-  image:
-    repository: registry
-    tag: 2.5.1
-
   ingress:
     enabled: true
     annotations:
@@ -70,15 +66,17 @@ docker-registry:
       secretRef: "minio"
   s3:
     region: homelab
-    regionEndpoint: http://minio:9000
+    # disabled due to middleware being bugged
+    # regionEndpoint: http://minio:9000
+    regionEndpoint: https://minio.homelab.bartbrinkman.nl
     bucket: registry
     rootdirectory: /
     encrypt: false
     secure: false
 
-  configData:
-    middleware:
-      storage:
-        - name: redirect
-          options:
-            baseurl: https://minio.homelab.bartbrinkman.nl/registry
+  # configData:
+  #   middleware:
+  #     storage:
+  #       - name: redirect
+  #         options:
+  #           baseurl: https://minio.homelab.bartbrinkman.nl/registry
