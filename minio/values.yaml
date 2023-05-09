@@ -20,6 +20,7 @@ minio:
     annotations:
       kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: letsencrypt
+      nginx.ingress.kubernetes.io/proxy-body-size: 64m
     path: /
     hosts:
       - minio.homelab.bartbrinkman.nl
