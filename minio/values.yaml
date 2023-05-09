@@ -63,7 +63,6 @@ docker-registry:
   storage: s3
   secrets:
     # htpasswd: qanRJgS3gXEHHqfOBlmF:$2y$10$YMDI2qmixg69An.k8eiSzegg/pTEx/6yqcEZFHuQxCw4Aj160.OOy
-    htpasswd: foo-bar-baz
     s3:
       secretRef: "minio"
   s3:
@@ -82,5 +81,9 @@ docker-registry:
       secret:
         secretName: registry
   
+
+# REGISTRY_AUTH : htpasswd
+# REGISTRY_AUTH_HTPASSWD_PATH : /auth/htpasswd
+# REGISTRY_AUTH_HTPASSWD_REALM : Registry Realm
 
     
