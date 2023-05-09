@@ -13,7 +13,7 @@ minio:
 
   resources:
     requests:
-      memory: 512Mi
+      memory: 1024Mi
 
   ingress:
     enabled: true
