@@ -37,7 +37,7 @@ ingress-nginx:
 
     config:
       custom-http-errors: "503"
-      proxy-body-size: 64m
+      proxy-body-size: 16384m
       
   defaultBackend:
     enabled: true
