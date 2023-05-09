@@ -73,10 +73,10 @@ docker-registry:
     secure: false
   extraVolumeMounts:
     - mountPath: "/auth"
-      name: my-htpasswd
+      name: htpasswd
       readOnly: true
   extraVolumes:
-    - name: my-htpasswd
+    - name: htpasswd
       secret:
         secretName: registry
   extraEnvVars:

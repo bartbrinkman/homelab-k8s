@@ -4,15 +4,6 @@ metadata:
   name: dalai
 spec:
   entrypoint: dalai   
-  # volumeClaimTemplates:   
-  #   - metadata:
-  #       name: workdir                     
-  #     spec:
-  #       accessModes: [ "ReadWriteOnce" ]
-  #       resources:
-  #         requests:
-  #           storage: 10Gi
-
   templates:
     - name: dalai
       steps:
@@ -33,13 +24,26 @@ spec:
         env:
           - name: DOCKER_HOST
             value: tcp://localhost:2375
+          - name: REGISTRY_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: docker-registry     
+                key: username     
+          - name: REGISTRY_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: docker-registry     
+                key: password
         workingDir: /src
         command:
           - sh
         args:
           - "-c"
           - |
-            until docker ps; do sleep 3; done; ls -l && docker build . -t dalai:latest -t dalai:
+            until docker ps; do sleep 3; done; \
+            docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD docker-registry.homelab.bartbrinkman.n && \
+            docker build . -t docker-registry.homelab.bartbrinkman.nl/dalai:latest && \
+            docker push docker-registry.homelab.bartbrinkman.nl/dalai:latest
       sidecars:
         - name: dind
           image: docker:dind
