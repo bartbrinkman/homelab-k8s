@@ -62,7 +62,8 @@ docker-registry:
           - docker-registry.homelab.bartbrinkman.nl
   storage: s3
   secrets:
-    htpasswd: qanRJgS3gXEHHqfOBlmF:$2y$10$YMDI2qmixg69An.k8eiSzegg/pTEx/6yqcEZFHuQxCw4Aj160.OOy
+    # htpasswd: qanRJgS3gXEHHqfOBlmF:$2y$10$YMDI2qmixg69An.k8eiSzegg/pTEx/6yqcEZFHuQxCw4Aj160.OOy
+    htpasswd: foo
     s3:
       secretRef: "minio"
   s3:
@@ -74,6 +75,15 @@ docker-registry:
     rootdirectory: /
     encrypt: false
     secure: false
+
+  extraVolumes:
+    - name: htpasswd
+      secret:
+        secretName: registry
+        items:
+          - key: htpasswd
+            path: /auth/htpasswd
+            mode: 511
 
   # configData:
   #   middleware:
