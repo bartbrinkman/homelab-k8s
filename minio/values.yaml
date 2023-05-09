@@ -66,14 +66,15 @@ docker-registry:
       secretRef: "minio"
   s3:
     region: homelab
-    regionEndpoint: http://minio-svc:9000
+    regionEndpoint: http://minio:9000
     bucket: registry
     rootdirectory: /
     encrypt: false
     secure: false
-  configData:
-    middleware:
-      storage:
-        - name: redirect
-          options:
-            baseurl: https://minio.homelab.bartbrinkman.nl/registry/
+    
+  # configData:
+  #   middleware:
+  #     storage:
+  #       - name: redirect
+  #         options:
+  #           baseurl: https://minio.homelab.bartbrinkman.nl/registry/
