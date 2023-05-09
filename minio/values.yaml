@@ -74,6 +74,8 @@ docker-registry:
     encrypt: false
     secure: false
 
+
+
   # configData:
   #   middleware:
   #     storage:
