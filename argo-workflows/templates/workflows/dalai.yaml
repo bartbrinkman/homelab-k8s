@@ -47,14 +47,12 @@ spec:
       sidecars:
         - name: dind
           image: docker:dind
-          command: ["dockerd", "--host", "tcp://127.0.0.1:2375"]
+          command: ["dockerd", "--host", "tcp://127.0.0.1:2375", "--insecure-registry", "minio-docker-registry.minio.svc.cluster.local:5000"]
           args:
             - "--mtu=1450"
           env:
             - name: DOCKER_TLS_CERTDIR
               value: ""
-            - name: DOCKER_OPTS
-              value: "--insecure-registry=minio-docker-registry.minio.svc.cluster.local:5000"
           securityContext:
             privileged: true
           mirrorVolumeMounts: true
