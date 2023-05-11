@@ -41,13 +41,13 @@ spec:
           - "-c"
           - |
             until docker ps; do sleep 3; done; 
-            docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD minio-docker-registry.minio.svc.cluster.local:5000 && 
-            docker build . -t minio-docker-registry.minio.svc.cluster.local:5000/dalai:latest && 
-            docker push minio-docker-registry.minio.svc.cluster.local:5000/dalai:latest
+            docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD docker-registry.homelab.bartbrinkman.nl && 
+            docker build . -t docker-registry.homelab.bartbrinkman.nl/dalai:latest && 
+            docker push docker-registry.homelab.bartbrinkman.nl/dalai:latest
       sidecars:
         - name: dind
           image: docker:dind
-          command: ["dockerd", "--host", "tcp://127.0.0.1:2375", "--insecure-registry", "minio-docker-registry.minio.svc.cluster.local:5000"]
+          command: ["dockerd", "--host", "tcp://127.0.0.1:2375"]
           args:
             - "--mtu=1450"
           env:
