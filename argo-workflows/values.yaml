@@ -2,23 +2,6 @@ argo-workflows:
   server:
     extraArgs:
       - '--auth-mode=server'
-      # - '--auth-mode=sso'
-
-
-    # sso: 
-    #   issuer: https://token.actions.githubusercontent.com
-    #   clientId:
-    #     name: argo-server-sso
-    #     key: client-id
-    #   clientSecret:
-    #     name: argo-server-sso
-    #     key: client-secret
-    #   redirectUrl: https://workflows.homelab.bartbrinkman.nl/oauth2/callback
-    #   rbac:
-    #     enabled: false
-      # scopes:
-      #   - groups
- 
     ingress:
       enabled: true
       annotations: 

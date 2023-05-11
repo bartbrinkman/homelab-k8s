@@ -53,6 +53,8 @@ spec:
           env:
             - name: DOCKER_TLS_CERTDIR
               value: ""
+            - name: DOCKER_OPTS
+              value: "--insecure-registry=minio-docker-registry.minio.svc.cluster.local:5000"
           securityContext:
             privileged: true
           mirrorVolumeMounts: true
