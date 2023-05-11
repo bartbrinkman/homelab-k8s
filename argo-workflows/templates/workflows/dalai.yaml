@@ -41,9 +41,9 @@ spec:
           - "-c"
           - |
             until docker ps; do sleep 3; done; 
-            docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD docker-registry.homelab.bartbrinkman.nl && 
-            docker build . -t docker-registry.homelab.bartbrinkman.nl/dalai:latest && 
-            docker push docker-registry.homelab.bartbrinkman.nl/dalai:latest
+            docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD minio-docker-registry.minio.svc.cluster.local:5000 && 
+            docker build . -t minio-docker-registry.minio.svc.cluster.local:5000/dalai:latest && 
+            docker push minio-docker-registry.minio.svc.cluster.local:5000/dalai:latest
       sidecars:
         - name: dind
           image: docker:dind
