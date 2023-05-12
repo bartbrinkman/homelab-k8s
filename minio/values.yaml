@@ -88,4 +88,6 @@ docker-registry:
       value: Registry Realm
     - name: REGISTRY_STORAGE_S3_V4AUTH
       value: 'false'
+    - name: REGISTRY_VALIDATION_DISABLED
+      value: 'true'
     
