@@ -86,8 +86,6 @@ docker-registry:
       value: /auth/htpasswd
     - name: REGISTRY_AUTH_HTPASSWD_REALM
       value: Registry Realm
-    - name: REGISTRY_STORAGE_S3_V4AUTH
-      value: 'false'
     - name: REGISTRY_VALIDATION_DISABLED
       value: 'true'
     
