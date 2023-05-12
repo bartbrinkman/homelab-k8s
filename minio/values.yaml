@@ -80,6 +80,8 @@ docker-registry:
       secret:
         secretName: registry
   extraEnvVars:
+    - name: REGISTRY_LOG_LEVEL
+      value: debug
     - name: REGISTRY_AUTH
       value: htpasswd
     - name: REGISTRY_AUTH_HTPASSWD_PATH
@@ -88,4 +90,3 @@ docker-registry:
       value: Registry Realm
     - name: REGISTRY_VALIDATION_DISABLED
       value: 'true'
-    
