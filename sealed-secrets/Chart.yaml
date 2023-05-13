@@ -26,3 +26,7 @@ dependencies:
 - name: sealed-secrets
   version: 2.2.0
   repository: https://bitnami-labs.github.io/sealed-secrets  
+- name: sealed-secrets-web
+  version: 3.0.5
+  repository: https://charts.bakito.net
+
