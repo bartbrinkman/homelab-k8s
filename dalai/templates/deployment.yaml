@@ -21,7 +21,7 @@ spec:
       imagePullSecrets:
         - name: docker-registry-secret
       containers:
-        - image: 'https://docker-registry.homelab.bartbrinkman.nl/dalai:latest'
+        - image: 'docker-registry.homelab.bartbrinkman.nl/dalai:latest'
           imagePullPolicy: IfNotPresent
           name: dalai
           ports:
