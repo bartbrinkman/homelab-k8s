@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dalai
+  namespace: dalai
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: dalai
+      app.kubernetes.io/name: dalai
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: dalai
+        app.kubernetes.io/name: dalai
+    spec:
+      imagePullSecrets:
+        - name: docker-registry-secret
+      containers:
+        - image: 'https://docker-registry.homelab.bartbrinkman.nl/dalai:latest'
+          imagePullPolicy: IfNotPresent
+          name: dalai
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
