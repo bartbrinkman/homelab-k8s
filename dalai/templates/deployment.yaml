@@ -21,10 +21,32 @@ spec:
       imagePullSecrets:
         - name: docker-registry-secret
       containers:
-        - image: 'docker-registry.homelab.bartbrinkman.nl/dalai:latest'
+        - name: dalai
+          image: 'docker-registry.homelab.bartbrinkman.nl/dalai:latest'
           imagePullPolicy: IfNotPresent
-          name: dalai
           ports:
             - containerPort: 3000
               name: http
               protocol: TCP
+          volumeMounts:
+            - name: alpaca-models 
+              mountPath: /root/dalai/alpaca
+            - name: llama-models 
+              mountPath: /root/dalai/llama
+        - name: sidecar-filebrowser
+          image: filebrowser/filebrowser
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: alpaca-models
+              mountPath: /srv/models/alpaca
+            - name: llama-models
+              mountPath: /srv/models/llama
+      volumes:
+        - name: alpaca-models
+          persistentVolumeClaim:
+            claimName: dalai-alpaca
+        - name: llama-models
+          persistentVolumeClaim:
+            claimName: dalai-llama
