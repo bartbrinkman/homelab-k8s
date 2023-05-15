@@ -23,7 +23,8 @@ spec:
       initContainers:
         - name: models
           image: minio/mc
-          command: ["sh", "-c", "mc cp minio/public/dalai/models/alpaca/7B/ggml-model-q4_0.bin /srv/models/alpaca/7B/"]
+          # command: ["sh", "-c", "mc cp minio/public/dalai/models/alpaca/7B/ggml-model-q4_0.bin /srv/models/alpaca/7B/"]
+          command: ["sh", "-c", "mc ls minio"]
           volumeMounts:
           - name: alpaca-models
             mountPath: /srv/models/alpaca
