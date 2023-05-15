@@ -23,7 +23,7 @@ spec:
       initContainers:
         - name: models
           image: minio/mc
-          command: ["sh", "-c", "mc cp https://minio.homelab.bartbrinkman.nl/public/dalai/models/alpaca/7B /root/dalai/alpaca"]
+          command: ["sh", "-c", "mc cp homelab/public/dalai/models/alpaca/7B /root/dalai/alpaca"]
           volumeMounts:
           - name: alpaca-models
             mountPath: /root/dalai/alpaca
@@ -40,8 +40,10 @@ spec:
               secretKeyRef:
                 name: minio-secret
                 key: accessSecret
-          # - name: AWS_DEFAULT_REGION
-          #   value: homelab
+          - name: MINIO_HOST
+            value: https://minio.homelab.bartbrinkman.nl
+          - name: MINIO_ALIAS
+            value: homelab
 
       containers:
         - name: dalai
