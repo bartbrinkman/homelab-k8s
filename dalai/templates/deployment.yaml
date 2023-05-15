@@ -23,7 +23,7 @@ spec:
       initContainers:
         - name: models
           image: minio/mc
-          command: ["sh", "-c", "mc cp homelab/public/dalai/models/alpaca/7B /root/dalai/alpaca"]
+          command: ["sh", "-c", "mc cp public/dalai/models/alpaca/7B/ /root/dalai/alpaca/7B/"]
           volumeMounts:
           - name: alpaca-models
             mountPath: /root/dalai/alpaca
