@@ -20,6 +20,26 @@ spec:
     spec:
       imagePullSecrets:
         - name: docker-registry-secret
+      initContainers:
+        - name: copy-models
+          image: amazon/aws-cli
+          command: ["sh", "-c", "aws s3 cp s3://minio.homelab.bartbrinkman.nl/public/dalai/models/alpaca/7B /root/dalai/alpaca"]
+          volumeMounts:
+          - name: alpaca-models
+            mountPath: /root/dalai/alpaca
+          - name: llama-models
+            mountPath: /root/dalai/llama
+          env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: minio-secret
+                key: accessKey
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: minio-secret
+                key: accessSecret
       containers:
         - name: dalai
           image: 'docker-registry.homelab.bartbrinkman.nl/dalai:latest'
@@ -33,16 +53,6 @@ spec:
               mountPath: /root/dalai/alpaca
             - name: llama-models 
               mountPath: /root/dalai/llama
-        - name: sidecar-filebrowser
-          image: filebrowser/filebrowser
-          ports:
-            - containerPort: 80
-              name: http
-          volumeMounts:
-            - name: alpaca-models
-              mountPath: /srv/models/alpaca
-            - name: llama-models
-              mountPath: /srv/models/llama
       volumes:
         - name: alpaca-models
           persistentVolumeClaim:
