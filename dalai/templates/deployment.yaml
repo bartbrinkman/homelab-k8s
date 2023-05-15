@@ -21,25 +21,28 @@ spec:
       imagePullSecrets:
         - name: docker-registry-secret
       initContainers:
-        - name: copy-models
-          image: amazon/aws-cli
-          command: ["sh", "-c", "aws s3 cp s3://minio.homelab.bartbrinkman.nl/public/dalai/models/alpaca/7B /root/dalai/alpaca"]
+        - name: models
+          image: minio/mc
+          command: ["sh", "-c", "mc cp https://minio.homelab.bartbrinkman.nl/public/dalai/models/alpaca/7B /root/dalai/alpaca"]
           volumeMounts:
           - name: alpaca-models
             mountPath: /root/dalai/alpaca
           - name: llama-models
             mountPath: /root/dalai/llama
           env:
-          - name: AWS_ACCESS_KEY_ID
+          - name: MINIO_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 name: minio-secret
                 key: accessKey
-          - name: AWS_SECRET_ACCESS_KEY
+          - name: MINIO_SECRET_KEY
             valueFrom:
               secretKeyRef:
                 name: minio-secret
                 key: accessSecret
+          # - name: AWS_DEFAULT_REGION
+          #   value: homelab
+
       containers:
         - name: dalai
           image: 'docker-registry.homelab.bartbrinkman.nl/dalai:latest'
