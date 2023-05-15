@@ -20,10 +20,22 @@ spec:
     spec:
       imagePullSecrets:
         - name: docker-registry-secret
-      initContainers:
+      containers:
+        - name: dalai
+          image: 'docker-registry.homelab.bartbrinkman.nl/dalai:latest'
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: alpaca-models 
+              mountPath: /root/dalai/alpaca
+            - name: llama-models 
+              mountPath: /root/dalai/llama
         - name: models
           image: minio/mc
-          command: ["sh", "-c", "mc cp public/dalai/models/alpaca/7B/ggml-model-q4_0.bin /srv/models/alpaca/7B/"]
+          # command: ["sh", "-c", "mc cp public/dalai/models/alpaca/7B/ggml-model-q4_0.bin /srv/models/alpaca/7B/"]
           volumeMounts:
           - name: alpaca-models
             mountPath: /srv/models/alpaca
@@ -44,20 +56,6 @@ spec:
             value: https://minio.homelab.bartbrinkman.nl
           - name: MINIO_ALIAS
             value: homelab
-
-      containers:
-        - name: dalai
-          image: 'docker-registry.homelab.bartbrinkman.nl/dalai:latest'
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 3000
-              name: http
-              protocol: TCP
-          volumeMounts:
-            - name: alpaca-models 
-              mountPath: /root/dalai/alpaca
-            - name: llama-models 
-              mountPath: /root/dalai/llama
       volumes:
         - name: alpaca-models
           persistentVolumeClaim:
