@@ -35,7 +35,8 @@ spec:
               mountPath: /root/dalai/llama
         - name: models
           image: minio/mc
-          entrypoint: ['']
+          command: [ "/bin/bash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
           # command: ["sh", "-c", "mc cp public/dalai/models/alpaca/7B/ggml-model-q4_0.bin /srv/models/alpaca/7B/"]
           volumeMounts:
           - name: alpaca-models
