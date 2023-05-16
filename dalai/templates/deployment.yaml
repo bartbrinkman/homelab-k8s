@@ -53,15 +53,11 @@ spec:
             - '-c'
             - |-
               mc alias set minio $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY;
-              if [ ! -e /srv/models/alpaca/main ];
-                then
-                mc cp --recursive minio/public/dalai/models/alpaca/ /srv/models/alpaca/;
-                chmod +x /srv/models/alpaca/main;
+              if [ ! -e /srv/models/alpaca/models/7B ];
+                then mc cp --recursive minio/public/dalai/models/alpaca/ /srv/models/alpaca/;
               fi;
-              if [ ! -e /srv/models/llama/main ];
-                then
-                mc cp --recursive minio/public/dalai/models/llama/ /srv/models/llama/;
-                chmod +x /srv/models/llama/main;
+              if [ ! -e /srv/models/llama/models/7B ];
+                then mc cp --recursive minio/public/dalai/models/llama/ /srv/models/llama/;
               fi;
           volumeMounts:
           - name: alpaca-models
