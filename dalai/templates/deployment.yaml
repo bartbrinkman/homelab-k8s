@@ -28,6 +28,7 @@ spec:
                 values:
                 - minio
             topologyKey: "kubernetes.io/hostname"
+            namespaceSelector: {}
       imagePullSecrets:
         - name: docker-registry-secret
       containers:
