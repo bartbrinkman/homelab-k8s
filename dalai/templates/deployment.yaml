@@ -30,9 +30,9 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: alpaca-models 
-              mountPath: /root/dalai/alpaca
+              mountPath: /root/dalai/alpaca/models
             - name: llama-models 
-              mountPath: /root/dalai/llama
+              mountPath: /root/dalai/llama/models
       initContainers:
         - name: models
           image: minio/mc
