@@ -45,7 +45,7 @@ spec:
             - name: llama-models 
               mountPath: /root/dalai/llama
       initContainers:
-        - name: models
+        - name: copy
           image: minio/mc:latest
           command: 
             - 'sh'
@@ -81,6 +81,21 @@ spec:
                 key: accessSecret
           - name: MINIO_HOST
             value: https://minio.homelab.bartbrinkman.nl
+        - name: install
+          image: 'docker-registry.homelab.bartbrinkman.nl/dalai:latest'
+          imagePullPolicy: IfNotPresent
+          command:
+            - 'sh'
+          args:
+            - 'c'
+            - |-
+              npx dalai alpaca install 7B;
+              npx dalai llama install 7B;
+          volumeMounts:
+            - name: alpaca-models 
+              mountPath: /root/dalai/alpaca
+            - name: llama-models 
+              mountPath: /root/dalai/llama
       volumes:
         - name: alpaca-models
           persistentVolumeClaim:
