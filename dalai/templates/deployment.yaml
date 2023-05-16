@@ -27,6 +27,7 @@ spec:
                 operator: In
                 values:
                 - minio
+            topologyKey: topology.kubernetes.io/zone
       imagePullSecrets:
         - name: docker-registry-secret
       containers:
