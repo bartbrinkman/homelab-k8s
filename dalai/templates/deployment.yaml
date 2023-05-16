@@ -35,9 +35,12 @@ spec:
               mountPath: /root/dalai/llama
         - name: models
           image: minio/mc
-          command: [ "/bin/bash", "-c", "--" ]
-          args: [ "while true; do sleep 30; done;" ]
-          # command: ["sh", "-c", "mc cp public/dalai/models/alpaca/7B/ggml-model-q4_0.bin /srv/models/alpaca/7B/"]
+          command: 'sh'
+          args:
+            - '-c'
+            - |
+              mc alias set minio $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY &&
+              mc cp minio/public/dalai/models/alpaca/7B/ /srv/models/alpaca/7B/          
           volumeMounts:
           - name: alpaca-models
             mountPath: /srv/models/alpaca
@@ -56,8 +59,6 @@ spec:
                 key: accessSecret
           - name: MINIO_HOST
             value: https://minio.homelab.bartbrinkman.nl
-          - name: MINIO_ALIAS
-            value: homelab
       volumes:
         - name: alpaca-models
           persistentVolumeClaim:
