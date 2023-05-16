@@ -16,7 +16,7 @@ spec:
           - name: dalai-source
             path: /src
             git:
-              repo: https://github.com/cocktailpeanut/dalai.git
+              repo: https://github.com/bartbrinkman/dalai.git
               revision: "main"
       container:
         name: build
