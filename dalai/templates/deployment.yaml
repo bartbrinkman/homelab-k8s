@@ -30,9 +30,9 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: alpaca-models 
-              mountPath: /root/dalai/alpaca
+              mountPath: /root/dalai/alpaca/models
             - name: llama-models 
-              mountPath: /root/dalai/llama
+              mountPath: /root/dalai/llama/models
       initContainers:
         - name: models
           image: minio/mc
@@ -42,8 +42,8 @@ spec:
             - '-c'
             - |
               mc alias set minio $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY &&
-              mc cp --recursive minio/public/dalai/models/alpaca/7B/ /srv/models/alpaca/models/7B/ &&
-              mc cp --recursive minio/public/dalai/models/llama/7B/ /srv/models/llama/models/7B/
+              mc cp --recursive minio/public/dalai/models/alpaca/7B/ /srv/models/7B/ &&
+              mc cp --recursive minio/public/dalai/models/llama/7B/ /srv/models//7B/
           volumeMounts:
           - name: alpaca-models
             mountPath: /srv/models/alpaca
