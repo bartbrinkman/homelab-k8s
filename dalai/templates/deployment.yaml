@@ -33,6 +33,15 @@ spec:
               mountPath: /root/dalai/alpaca
             - name: llama-models 
               mountPath: /root/dalai/llama
+          affinity:
+            podAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                    - minio
       initContainers:
         - name: models
           image: minio/mc:latest
@@ -40,10 +49,12 @@ spec:
             - 'sh'
           args:
             - '-c'
-            - |
-              mc alias set minio $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY &&
-              mc cp --recursive minio/public/dalai/models/llama/* /srv/models/llama/ &&
-              chmod +x /srv/models/llama/main
+            - |-
+              mc alias set minio $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY;
+              if [ ! -e /srv/models/llama/main ];
+                mc cp --recursive minio/public/dalai/models/llama/* /srv/models/llama/;
+                chmod +x /srv/models/llama/main;
+              fi;
           volumeMounts:
           - name: alpaca-models
             mountPath: /srv/models/alpaca
