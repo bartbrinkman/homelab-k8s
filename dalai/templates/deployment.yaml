@@ -35,7 +35,8 @@ spec:
               mountPath: /root/dalai/llama
         - name: models
           image: minio/mc
-          command: 'sh'
+          command: 
+            - 'sh'
           args:
             - '-c'
             - |
