@@ -58,6 +58,11 @@ spec:
                 mc cp --recursive minio/public/dalai/models/llama/* /srv/models/llama/;
                 chmod +x /srv/models/llama/main;
               fi;
+              if [ ! -e /srv/models/alpaca/main ];
+                then
+                mc cp --recursive minio/public/dalai/models/alpaca/* /srv/models/alpaca/;
+                chmod +x /srv/models/alpaca/main;
+              fi;
           volumeMounts:
           - name: alpaca-models
             mountPath: /srv/models/alpaca
