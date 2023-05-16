@@ -41,7 +41,7 @@ spec:
             - '-c'
             - |
               mc alias set minio $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY &&
-              mc cp minio/public/dalai/models/alpaca/7B/ /srv/models/alpaca/7B/          
+              mc cp --recursive minio/public/dalai/models/alpaca/7B/ /srv/models/alpaca/7B/          
           volumeMounts:
           - name: alpaca-models
             mountPath: /srv/models/alpaca
