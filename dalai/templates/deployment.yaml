@@ -33,6 +33,7 @@ spec:
               mountPath: /root/dalai/alpaca
             - name: llama-models 
               mountPath: /root/dalai/llama
+      initContainers:
         - name: models
           image: minio/mc
           command: 
