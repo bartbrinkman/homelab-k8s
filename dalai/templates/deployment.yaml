@@ -18,6 +18,15 @@ spec:
         app.kubernetes.io/instance: dalai
         app.kubernetes.io/name: dalai
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - minio
       imagePullSecrets:
         - name: docker-registry-secret
       containers:
@@ -33,15 +42,6 @@ spec:
               mountPath: /root/dalai/alpaca
             - name: llama-models 
               mountPath: /root/dalai/llama
-          affinity:
-            podAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-              - labelSelector:
-                  matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                    - minio
       initContainers:
         - name: models
           image: minio/mc:latest
