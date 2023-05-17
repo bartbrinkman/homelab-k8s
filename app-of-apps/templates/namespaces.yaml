@@ -210,3 +210,12 @@ metadata:
     name: dalai
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: utility
+  labels:
+    name: utility
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"

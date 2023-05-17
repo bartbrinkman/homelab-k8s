@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cyberchef
+  namespace: utility
+spec:
+  ports:
+    - name: http
+      port: 8000
+      protocol: TCP
+      targetPort: http
+  selector:
+    app.kubernetes.io/instance: cyberchef
+    app.kubernetes.io/name: cyberchef
+  type: ClusterIP

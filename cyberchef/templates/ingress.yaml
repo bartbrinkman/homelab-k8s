@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/custom-http-errors: "503"
+  name: cyberchef
+  namespace: utility
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: cyberchef.homelab.bartbrinkman.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: cyberchef
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - cyberchef.homelab.bartbrinkman.nl
+      secretName: cyberchef-tls

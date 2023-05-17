@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cyberchef
+  namespace: utility
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: cyberchef
+      app.kubernetes.io/name: cyberchef
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: cyberchef
+        app.kubernetes.io/name: cyberchef
+    spec:
+      containers:
+        - name: cyberchef
+          image: 'mpepping/cyberchef:latest'
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+              name: http
+              protocol: TCP
