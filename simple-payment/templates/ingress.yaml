@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: simple-payment
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: betalen.sdg-alkmaar.nl
+      http:
+        paths:
+          - backend:
+              service:
+                name: simple-payment-proxy
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - betalen.sdg-alkmaar.nl
+      secretName: simple-payment-tls
