@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redirect
+data:
+  redirect.conf: |
+    server {
+        listen 80 default_server;
+        server_name _;
+        
+        return 302 https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=GNW4uyRalvmnL68TMk4m3M5g1WMKMVGo;
+    }
