@@ -7,7 +7,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: snipe-it
+    namespace: inventory
     server: {{ .Values.spec.destination.server }}
   project: default
   source:

@@ -39,15 +39,6 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: portainer
-  labels:
-    name: portainer
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1"
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: code-server
   labels:
     name: code-server
@@ -75,56 +66,10 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: kubernetes-dashboard
-  labels:
-    name: kubernetes-dashboard
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1"
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: snipe-it
-  labels:
-    name: snipe-it
-    istio-injection: enabled
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1"
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: mysql
   labels:
     name: mysql
     istio-injection: enabled
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1"
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: grocy
-  labels:
-    name: grocy
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1"
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: rstudio
-  labels:
-    name: rstudio
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1"
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: finance
-  labels:
-    name: finance
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
 ---
@@ -165,15 +110,7 @@ metadata:
     name: istio-system
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: inventory
-  labels:
-    name: inventory
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1"
+
 ---
 apiVersion: v1
 kind: Namespace
@@ -217,5 +154,32 @@ metadata:
   name: utility
   labels:
     name: utility
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: inventory
+  labels:
+    name: inventory
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hosted
+  labels:
+    name: hosted
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: finance
+  labels:
+    name: finance
     annotations:
       argocd.argoproj.io/sync-wave: "-1"

@@ -2,7 +2,7 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: portainer-scaledobject
-  namespace: portainer
+  namespace: utility
 spec:
   idleReplicaCount: 0
   minReplicaCount: 1
@@ -17,4 +17,4 @@ spec:
       serverAddress: http://kube-prometheus-stack-prometheus.monitoring:9090
       metricName: nginx_ingress_controller_requests
       threshold: '0.5'
-      query: group(rate(nginx_ingress_controller_requests{exported_namespace="portainer"}[2m]) > 0)
+      query: group(rate(nginx_ingress_controller_requests{exported_namespace="utility"}[2m]) > 0)
