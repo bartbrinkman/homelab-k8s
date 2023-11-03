@@ -1,6 +1,7 @@
 ingress-nginx:
   controller:
     kind: "DaemonSet"
+    hostNetwork: true
     # podAnnotations:
     #   sidecar.istio.io/inject: 'true'
     #   traffic.sidecar.istio.io/includeInboundPorts: ""
@@ -39,7 +40,6 @@ ingress-nginx:
       custom-http-errors: "503"
       proxy-body-size: "0"
       proxy-request-buffering: 'on'
-      hostNetwork: true
       
   defaultBackend:
     enabled: true
