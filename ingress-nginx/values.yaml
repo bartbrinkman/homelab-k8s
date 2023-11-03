@@ -38,7 +38,7 @@ ingress-nginx:
     config:
       custom-http-errors: "503"
       proxy-body-size: "0"
-      proxy-request-buffering: 'true'
+      proxy-request-buffering: 'on'
       
   defaultBackend:
     enabled: true
