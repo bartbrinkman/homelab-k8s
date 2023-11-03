@@ -1,10 +1,10 @@
 ingress-nginx:
   controller:
     kind: "DaemonSet"
-    podAnnotations:
-      sidecar.istio.io/inject: 'true'
-      traffic.sidecar.istio.io/includeInboundPorts: ""
-      traffic.sidecar.istio.io/excludeInboundPorts: "80,443"
+    # podAnnotations:
+    #   sidecar.istio.io/inject: 'true'
+    #   traffic.sidecar.istio.io/includeInboundPorts: ""
+    #   traffic.sidecar.istio.io/excludeInboundPorts: "80,443"
 
     watchIngressWithoutClass: true
 
