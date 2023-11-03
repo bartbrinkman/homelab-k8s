@@ -1,32 +1,32 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: synology
-  namespace: default
-spec:
-  type: ExternalName
-  externalName: 192.168.1.237 
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: synology
-  namespace: default
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
-spec:
-  rules:
-    - host: synology.homelab.bartbrinkman.nl
-      http:
-        paths:
-          - backend:
-              service:
-                name: synology
-                port:
-                  number: 5000
-            path: /
-            pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - synology.homelab.bartbrinkman.nl
-      secretName: synology-tls
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: synology
+#   namespace: default
+# spec:
+#   type: ExternalName
+#   externalName: 192.168.1.237 
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: synology
+#   namespace: default
+#   annotations:
+#     cert-manager.io/cluster-issuer: letsencrypt
+# spec:
+#   rules:
+#     - host: synology.homelab.bartbrinkman.nl
+#       http:
+#         paths:
+#           - backend:
+#               service:
+#                 name: synology
+#                 port:
+#                   number: 5000
+#             path: /
+#             pathType: ImplementationSpecific
+#   tls:
+#     - hosts:
+#         - synology.homelab.bartbrinkman.nl
+#       secretName: synology-tls
