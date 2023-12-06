@@ -8,5 +8,5 @@ data:
         listen 80 default_server;
         server_name _;
         
-        return 302 https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=fii0DgKtTeaUSYSGpUmgh8vV9oSxHqXM;
+        return 302 https://www.ing.nl/payreq/m/?trxid=2J7gUsBwTQC3TmBNMcox4uTE1KoMfQuO;
     }
